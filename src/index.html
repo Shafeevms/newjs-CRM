@@ -4,8 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= htmlWebpackPlugin.options.title %></title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="root"></div>
+  <header class="header">
+    <div class="container">
+      <img src="./img/logo.svg" alt="logo" class="header__logo">
+      <input type="text" class="header__input" placeholder="введите запрос">
+    </div>
+  </header>
+  <main class="main">
+    <div class="container">
+      <h2 class="title">Клиенты</h2>
+      <table class="table">
+        <tr class="table__header">
+          <th class="table__title">
+            <h3 class="table__title-text">ID</h3>
+            <span class="table__title-icon"></span>
+          </th>
+          <th class="table__title">
+            <h3 class="table__title-text">Фамилия Имя Отчество</h3>
+            <span class="table__title-icon"></span>
+          </th>
+          <th class="table__title">
+            <h3 class="table__title-text">Дата и время создания</h3>
+            <span class="table__title-icon"></span>
+          </th>
+          <th class="table__title">
+            <h3 class="table__title-text">Последние изминения</h3>
+            <span class="table__title-icon"></span>
+          </th>
+          <th class="table__title">
+            <h3 class="table__title-text">Контакты</h3>
+          </th>
+            <th class="table__title">
+              <h3 class="table__title-text">Действия</h3>
+            </th>
+        </tr>
+      </table>
+    </div>
+  </main>
 </body>
 </html>

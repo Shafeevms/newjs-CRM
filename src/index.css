@@ -1,0 +1,76 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 984px;
+}
+
+.header {
+  padding: 23px 0;
+  box-shadow: 0px 9.03012px 27.0904px rgba(176, 190, 197, 0.32), 0px 3.38629px 5.64383px rgba(176, 190, 197, 0.32);
+}
+
+.header__logo {
+  margin-right: 53px;
+}
+.header__input {
+  padding-left: 16px;
+  width: 581px;
+  height: 44px;
+  border: 1px solid rgba(51, 51, 51, 0.2);
+}
+.title {
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.table {
+}
+.table__header {
+}
+.table__title {
+  text-align: start;
+  font-size: 12px;
+  color: #b0b0b0;
+  outline: 1px solid red;
+}
+
+.table__title:nth-child(1) {
+  padding-left: 20px;
+  width: 62px;
+}
+
+.table__title:nth-child(2) {
+  width: 201px;
+}
+
+.table__title:nth-child(3) {
+  width: 128px;
+}
+
+.table__title:nth-child(4) {
+  width: 128px;
+}
+
+.table__title:nth-child(5) {
+  width: 108px;
+}
+
+.table__title:nth-child(6) {
+  width: 189px;
+}
+
+.table__title-text {
+  font-size: 12px;
+}
+
+.table__title-icon {
+}
