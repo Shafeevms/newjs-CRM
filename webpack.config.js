@@ -45,16 +45,17 @@ module.exports = {
           use: ['babel-loader'],
       },
       {
+        test: /\.(css)$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
+      },
+      {
         test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
         type: 'asset/resource',
+        use: ['file-loader']
       },
       {
         test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
         loader: 'file-loader',
-      },
-      {
-        test: /\.(css)$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
     ],
   }
