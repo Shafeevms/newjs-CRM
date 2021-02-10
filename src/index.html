@@ -17,55 +17,71 @@
   <main class="main">
     <div class="container">
       <h2 class="title">Клиенты</h2>
-      <table class="table">
-        <thead class="table__header">
-          <th class="table__title">
-            <h3 class="table-title table__title-id">ID</h3>
-            <span class="table__title-icon"></span>
-          </th>
-          <th class="table__title">
-            <h3 class="table-title table__title-name">Фамилия Имя Отчество</h3>
-          </th>
-          <th class="table__title">
-            <h3 class="table-title table__title-date">Дата и время создания</h3>
-          </th>
-          <th class="table__title">
-            <h3 class="table-title table__title-change">Последние изминения</h3>
-            <span class="table__title-icon"></span>
-          </th>
-          <th class="table__title">
-            <h3 class="table-title table__title-contacts">Контакты</h3>
-          </th>
-            <th class="table__title" colspan="2">
-              <h3 class="table-title table__title-text">Действия</h3>
-            </th>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="table__id">123455</td>
-            <td class="table__name">Скворцов Денис Юрьевич</td>
-            <td class="table__created">
-              <span class="table__date">21.02.2021</span>
-              <span class="table__time">12:41</span>
-            </td>
-            <td class="table__changed">
-              <span class="table__date">21.02.2021</span>
-              <span class="table__time">12:41</span>
-            </td>
-            <td class="table__contacts">
-              <ul class="social-list">
-                <li class="social-item vk"></li>
-                <li class="social-item fb"></li>
-                <li class="social-item tel"></li>
-                <li class="social-item mail"></li>
-                <li class="social-item mail-number"></li>
-              </ul>
-            </td>
-            <td class="table__modify">Изменить</td>
-            <td class="table__delete"> Удалить</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table__head head">
+        <ul class="head__list row no-gutters">
+          <li class="head__item col-md-1">
+            <h2 class="head__title head__title-id">ID</h2>
+            <span class="arrow"><img src="./img/arrow_downward.svg"></span>
+          </li>
+          <li class="head__item col-md-3">
+            <h2 class="head__title">Фамилия Имя Отчество</h2>
+            <span class="arrow"><img src="./img/arrow-down.svg"></span>
+            <span class="head__title-text">А-Я</span>
+          </li>
+          <li class="head__item-line col-md-2">
+            <h2 class="head__title">Дата и время создания</h2>
+            <span class="arrow"><img src="./img/arrow-down.svg"></span>
+          </li>
+          <li class="head__item-line col-md-2">
+            <h2 class="head__title">Последние изменения</h2>
+            <span class="arrow"><img src="./img/arrow-down.svg"></span>
+          </li>
+          <li class="head__item col-md-2">
+            <h2 class="head__title">Контакты</h2>
+          </li>
+          <li class="head__item col-md-2">
+            <h2 class="head__title">Действия</h2>
+          </li>
+        </ul>
+      </div>
+      <div class="table__body">
+        <ul class="clients-list">
+          <li class="clients-item">
+            <ul class="client__list row no-gutters">
+              <li class="client__item col-md-1">
+                <h2 class="client__title client__title-id">123456</h2>
+              </li>
+              <li class="client__item col-md-3">
+                <h2 class="client__title">Скворцов Денис Юрьевич</h2>
+              </li>
+              <li class="client__item-line col-md-2">
+                <h2 class="client__title">21.02.21</h2>
+                <span class="time">12:02</span>
+              </li>
+              <li class="client__item-line col-md-2">
+                <h2 class="client__title">21.02.21</h2>
+                <span class="time">12:02</span>
+              </li>
+              <li class="client__item col-md-2">
+                <ul class="social flex">
+                  <li class="social__item"><img src="./img/vk.svg" alt="vk"></li>
+                  <li class="social__item"><img src="./img/fb.svg" alt="fb"></li>
+                  <li class="social__item"><img src="./img/phone.svg" alt="phone"></li>
+                  <li class="social__item"><img src="./img/mail.svg" alt="mail"></li>
+                  <li class="social__item"><img src="./img/mail-2.svg" alt="mail"></li>
+                </ul>
+              </li>
+              <li class="client__item-btn col-md-1">
+                <button class="delete"><span class="btn-icon"><img src="./img/edit.svg"></span> Изменить</button>
+              </li>
+              <li class="client__item-btn col-md-1">
+                <button class="cancel"><span class="btn-icon"><img src="./img/cancel.svg"></span>Удалить</button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <button class="add"></button>
     </div>
   </main>
 </body>
