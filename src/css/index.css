@@ -3,6 +3,11 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+button {
+  cursor: pointer;
+  border: none;
+}
+
 body, h2, h3, ul, button {
   padding: 0;
   margin: 0;
@@ -10,6 +15,10 @@ body, h2, h3, ul, button {
 
 ul {
   list-style: none;
+}
+
+.body {
+  position: relative;
 }
 
 .container {
@@ -148,3 +157,133 @@ ul {
   border: 1px solid #9873FF;
 }
 
+/* MODAL */
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(71, 68, 68, 0.527);
+  z-index: 2;
+}
+.modal__body {
+  padding-bottom: 30px;
+  position: relative;
+  width: 450px;
+  background-color: #fff;
+}
+
+.modal__container {
+  padding: 25px 30px;
+}
+
+.change__data {
+}
+
+.close-modal {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: none;
+}
+
+.modal__title {
+  margin-bottom: 16px;
+  display: inline-block;
+  font-size: 18px;
+}
+
+
+.modal__form-input {
+  display: flex;
+  flex-direction: column;
+}
+.modal__id {
+  font-size: 12px;
+  color: #b0b0b0;
+}
+
+.modal__id::before {
+  content: "ID: ";
+}
+
+.input-descr {
+  font-size: 10px;
+  color: #b0b0b0;
+}
+
+.modal__input {
+  margin-bottom: 25px;
+  height: 26px;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #C8C5D1;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#lastname {
+  margin-bottom: 0;
+}
+
+.add__contact {
+  margin-bottom: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  background-color: #c8c5d146;
+}
+
+.btn__add-contact {
+  position: relative;
+  padding-left: 20px;
+  border: none;
+  transition: text-shadow .3s ease;
+}
+
+.add__contact-icon {
+  position: absolute;
+  top: 3px;
+  left: 0;
+}
+
+.btn__save-client {
+  margin: 0 auto;
+  margin-bottom: 5px;
+  display: block;
+  width: 147px;
+  height: 44px;
+  background-color: #9873FF;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color .3s ease,
+              border .3s ease
+              text-shadow .3s ease;
+}
+.btn__del-client {
+  margin: 0 auto;
+  display: block;
+  background-color: transparent;
+  border-bottom: 1px solid #000;
+  transition: text-shadow .3s ease;
+}
+.btn__add-contact:hover,
+.btn__del-client:hover {
+  text-shadow: 0 0 1px #000;
+}
+
+.btn__save-client:hover {
+  background-color: #8566db;
+  border: 1px solid #4306eb;
+  text-shadow: 0 0 1px #000;
+}

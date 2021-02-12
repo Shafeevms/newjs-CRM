@@ -10,9 +10,33 @@
 <body class="body">
   <div class="modal">
     <div class="modal__body">
-      <button class="close-modal"></button>
-      <div class="modal__content"> сюда вставлять разные дивы с необходимыми видами окна
-
+      <button class="close-modal"><img src="./img/x.svg" alt="close-modal"></button>
+      <div aria-modal="change-window" class="change__data">
+        <div class="modal__container">
+          <div class="title__wrapper">
+            <h2 class="modal__title">Изменить данные</h2>
+            <span class="modal__id">123458</span>
+          </div>
+          <form action="#" class="modal__form-input">
+            <label class="input-descr" for="surname">Фамилия*
+            </label>
+            <input type="text" class="modal__input" id="surname">
+            <label class="input-descr" for="name">Имя*
+            </label>
+            <input type="text" class="modal__input" id="name">
+            <label class="input-descr" for="lastname">Отчество
+            </label>
+            <input type="text" class="modal__input" id="lastname">
+          </form>
+        </div>
+        <div class="add__contact">
+          <form action="" class="modal__form-add-social">
+            <!-- <select>Начинать отсюда</select> -->
+          </form>
+          <button class="btn__add-contact"><img src="./img/add-contact.svg" alt="добавить контакт" class="add__contact-icon">Добавить контакт</button>
+        </div>
+        <button class="btn__save-client">Сохранить</button>
+        <button class="btn__del-client">Удалить клиента</button>
       </div>
     </div>
   </div>
