@@ -236,10 +236,12 @@ ul {
 
 .add__contact {
   margin-bottom: 25px;
+  padding: 8px 0;
+  /* padding-bottom: 25px; */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 35px;
+  flex-direction: column;
   background-color: #c8c5d146;
 }
 
@@ -286,4 +288,74 @@ ul {
   background-color: #8566db;
   border: 1px solid #4306eb;
   text-shadow: 0 0 1px #000;
+}
+
+
+.modal__form-add-social {
+  /* margin-bottom: 25px; */
+  padding-top: 19px;
+  padding-bottom: 25px;
+}
+
+.add-social-select {
+  margin: 0;
+  padding-left: 12px;
+  width: 123px;
+  height: 37px;
+  background-color: #E7E5EB;
+  border: 1px solid #C8C5D1;
+}
+
+.option-img {
+  position: absolute;
+  display: block;
+  height: 6px;
+  width: 9px;
+  top: 15px;
+  left: 109px;
+  background: #E7E5EB;
+  z-index: 10;
+}
+
+.rotate {
+  transform: rotate(180deg)
+}
+
+.d-none {
+  display: none;
+}
+
+.add-social__input {
+  margin-left: -5px;
+  padding-left: 12px;
+  padding-right: 30px;
+  width: 267px;
+  height: 37px;
+  border: 1px solid #C8C5D1;
+  outline: none;
+}
+
+.add-social__item {
+  position: relative;
+}
+
+.add-social__item:not(:last-child) {
+  margin-bottom: 25px;
+}
+
+.add-social__btn-clear {
+  display: block;
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  height: 35px;
+  width: 27px;
+  background-color: #E7E5EB;
+  border-left: 1px solid #C8C5D1;
+}
+
+.btn-clear-svg {
+  position: absolute;
+  top: 12px;
+  right: 7px;
 }
