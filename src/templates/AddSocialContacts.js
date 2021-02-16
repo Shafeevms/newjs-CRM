@@ -1,8 +1,3 @@
-export const ListOfSocialConstacts = () => (
-  `<ul class="modal__form-add-social add-social">
-  <!-- сюда вставляем ItemOfSocialContacts -->
-  </ul>`
-)
 
 export const ItemOfSocialContacts = ('rotate', 'd-none') => (
   `<li class="add-social__item">
@@ -21,6 +16,4 @@ export const ItemOfSocialContacts = ('rotate', 'd-none') => (
   </li>`
 )
 
-// при нажатии на кнопку, добавляется ul, и нужно добавить padding-bottom 25px для add__contact -->
-// а также при следующих нажатиях на кнопку должно добавляться li -->
-// непонятно, как по-другому организовать верстку -->
+

@@ -8,7 +8,7 @@ button {
   border: none;
 }
 
-body, h2, h3, ul, button {
+body, h2, h3, ul, button, p {
   padding: 0;
   margin: 0;
 }
@@ -85,6 +85,7 @@ ul {
   margin-bottom: 30px;
   background-color: #fff;
   min-height: 300px;
+  height: 100%;
 }
 
 .client__title {
@@ -125,7 +126,7 @@ ul {
 }
 
 .social {
-  padding-right: 55px;
+  padding-right: 45px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -178,11 +179,24 @@ ul {
   background-color: #fff;
 }
 
+.modal__body-new {
+  padding-bottom: 0;
+}
+
 .modal__container {
   padding: 25px 30px;
 }
 
-.change__data {
+.modal__container-new {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal__text {
+  margin-bottom: 25px;
+  max-width: 275px;
+  text-align: center;
 }
 
 .close-modal {
@@ -359,3 +373,26 @@ ul {
   top: 12px;
   right: 7px;
 }
+
+
+/* LOADER */
+
+.loader {
+  position: relative;
+  display: flex;
+  min-height: 300px;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+@keyframes spin {
+ 100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader__img {
+  animation: spin .5s linear infinite;
+}
+
