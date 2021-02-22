@@ -3,6 +3,8 @@ import './css/index.css'
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 import { didMount } from './actions/didMount';
+import { store } from './store';
+import { itemsToRender } from './templates';
 
 
 // !вынести куда-то tippy!
@@ -12,6 +14,7 @@ tippy('.myButton', {
 tippy('.myButton1', {
   content: 'My tooltip1!',
 });
+
 
 didMount()
 // по ховеру изменить путь к картинке в кнопке "Изменить"

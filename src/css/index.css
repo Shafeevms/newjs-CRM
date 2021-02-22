@@ -90,7 +90,7 @@ ul {
 
 .client__title {
   display: inline;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 400;
 }
 
@@ -108,7 +108,7 @@ ul {
 }
 
 .social__item:not(:nth-child(5n)) {
-  margin-right: 7px;
+  margin-right: 10px;
 }
 
 .social__item:nth-last-child(n+6) {
@@ -205,6 +205,7 @@ ul {
   right: 30px;
   width: 20px;
   height: 20px;
+  background: url('/src/img/x.svg') no-repeat;
   background-color: #fff;
   border: none;
 }
@@ -257,6 +258,10 @@ ul {
   align-items: center;
   flex-direction: column;
   background-color: #c8c5d146;
+}
+
+.add__contact-padding {
+  padding-bottom: 25px;
 }
 
 .btn__add-contact {
@@ -354,7 +359,7 @@ ul {
 }
 
 .add-social__item:not(:last-child) {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 .add-social__btn-clear {

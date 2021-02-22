@@ -1,4 +1,4 @@
-export const ClientLine = (clientData) => (
+export const ClientLine = ({ id, surname, firstName, lastName }) => (
   `<li class="clients-item">
     <ul class="client__list row no-gutters">
       <li class="client__item col-md-1">

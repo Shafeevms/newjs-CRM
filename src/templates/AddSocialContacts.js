@@ -1,5 +1,5 @@
 
-export const ItemOfSocialContacts = ('rotate', 'd-none') => (
+export const ItemOfSocialContacts = () => (
   `<li class="add-social__item">
     <img src="./img/social-arrow.png" class="option-img rotate">
     <select name="social" class="add-social-select">
@@ -17,3 +17,4 @@ export const ItemOfSocialContacts = ('rotate', 'd-none') => (
 )
 
 
+//'rotate', 'd-none'

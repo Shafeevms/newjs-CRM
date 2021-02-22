@@ -20,9 +20,12 @@
     "file": "^0.2.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.0.0",
+    "image-webpack-loader": "^7.0.1",
     "loader": "^2.1.1",
     "postcss-loader": "^5.0.0",
     "style-loader": "^2.0.0",
+    "svg-url-loader": "^7.1.1",
+    "url-loader": "^4.1.1",
     "webpack": "^5.21.2",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"

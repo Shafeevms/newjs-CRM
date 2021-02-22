@@ -1,9 +1,11 @@
+import { store } from "../store";
+
 const URL = '//localhost:3000/api/clients';
 
-export const addClient = (client) => {
+export const addClient = (clientToADD) => {
   fetch(URL, {
     method: 'POST',
-    body: JSON.stringify(client)
+    body: JSON.stringify(clientToADD)
   })
 }
 
@@ -20,4 +22,8 @@ export const deleteClient = id => {
   })
 }
 
-export const getClients = () => fetch(URL).then(resp => resp.json()); // возвращает промис
+export const getClients = () => {
+  return fetch(URL)
+  .then(resp => resp.json())
+  .then(resp => store.clients = [...store.clients, ...resp])
+}

@@ -17,7 +17,6 @@ module.exports = {
       historyApiFallback: true,
       contentBase: path.resolve(__dirname, './dist'),
       open: true,
-      compress: true,
       hot: true,
       port: 8080,
     },
@@ -49,12 +48,35 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
-        type: 'asset/resource',
-        use: ['file-loader']
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            options: {
+              bypassOnDebug: true, // webpack@1.x
+              disable: true, // webpack@2.x and newer
+            },
+          },
+        ],
       },
+      // {
+      //   test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+      //   type: 'asset/resource',
+      //   use: [{
+      //     loader: 'url-loader',
+      //     options: {}
+      // }]
+      // },
+      // {
+      //   test: /\.svg/,
+      //   use: {
+      //     loader: "svg-url-loader",
+      //     options: {},
+      //   },
+      // },
       {
-        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        test: /\.(woff(2)?|eot|ttf|otf|)$/,
         loader: 'file-loader',
       },
     ],

@@ -1,13 +1,18 @@
-import { getClients } from "../api/api";
-import { clients, itemsToRender } from '../store'
-import { ClientLine } from '../templates/ClientLine';
+import { store } from '../store';
 import { render } from '../actions/render';
+import { Loader } from '../templates/Loader';
+import { getClients } from '../api/api';
+import { itemsToRender } from '../templates';
+import { newClientModalOPen } from './newClientModalOPen';
+import { ClientLine } from '../templates/ClientLine';
 
-export const didMount = () => {
-  document.addEventListener("DOMContentLoaded", () => {
-    getClients().then(resp => [...clients, ...resp]);
-    render('.clients-list', itemsToRender())
-  });
+const DOMContentLoaded = () => {
+  render('.clients-list', Loader());
+  getClients().then(() => render('.clients-list', itemsToRender(store.clients, ClientLine)));
 }
 
-// рендер для строки будет перезаписывать всё - нужно сделать универсальнее, либо еще один
+export const didMount = () => {
+  document.addEventListener("DOMContentLoaded", DOMContentLoaded);
+  store.actions['DOMContentLoaded'] = DOMContentLoaded;
+  document.querySelector('.btn-add').addEventListener('click', newClientModalOPen);
+}
