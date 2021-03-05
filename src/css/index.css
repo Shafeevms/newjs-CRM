@@ -108,7 +108,7 @@ ul {
 }
 
 .social__item:not(:nth-child(5n)) {
-  margin-right: 10px;
+  margin-right: 7px;
 }
 
 .social__item:nth-last-child(n+6) {
