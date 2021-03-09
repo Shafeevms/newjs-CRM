@@ -12,6 +12,11 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
     filename: '[name].bundle.js',
   },
+  resolve: {
+    fallback: {
+      "path": false
+    }
+},
   mode: 'development',
     devServer: {
       historyApiFallback: true,

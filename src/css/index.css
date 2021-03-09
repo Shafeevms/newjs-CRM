@@ -116,7 +116,7 @@ ul {
 }
 .client__title-id,
 .head__title-id {
-  padding-left: 20px;
+  padding-left: 5px;
   color: #b0b0b0;
 }
 
@@ -126,7 +126,7 @@ ul {
 }
 
 .social {
-  padding-right: 45px;
+  max-width: 120px;
   display: flex;
   flex-wrap: wrap;
 }
@@ -334,6 +334,7 @@ ul {
   left: 109px;
   background: #E7E5EB;
   z-index: 10;
+  pointer-events: none;
 }
 
 .rotate {
@@ -377,6 +378,7 @@ ul {
   position: absolute;
   top: 12px;
   right: 7px;
+  pointer-events: none;
 }
 
 
