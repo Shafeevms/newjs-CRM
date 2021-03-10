@@ -2,7 +2,7 @@ import { NewClientModal } from "../templates/NewClientModal";
 import { ItemOfSocialContacts } from '../templates/AddSocialContacts';
 import { render } from "./render";
 import { store } from "../store";
-import { ValidationError } from "webpack";
+
 
 const socialContactOptions = [];
 const newClient = {
