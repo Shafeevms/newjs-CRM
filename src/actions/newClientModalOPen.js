@@ -37,9 +37,13 @@ const clickButtonListeners = (e) => {
       addExtraContact(e);
     } else if (e.target.classList.contains('add-social__btn-clear')) {
       parent.remove();
-      // parent.querySelector('.add-social__input').value = '';
+      socialContactOptions.pop();
+      if (socialContactOptions.length === 0) {
+        document.querySelector('.add-social').classList.add('d-none');
+        document.querySelector('.add__contact').classList.remove('add__contact-padding');
+      }
     } else if (e.target.classList.contains('btn__save-client')) {
-      inputValidation();
+      onSave();
     }
 }
 
@@ -71,10 +75,20 @@ const addClearInputButton = (ev) => {
   }
 }
 
+
+//? сохранить - алгоритм:
+// сначала заполнить объект из полей модального окна
+// потом уже к объекту приминить валидацию
+// если false добавить красное примечание в поле
+// если true отправить объект на сервер
+// из сервера отрисовать новый список
+
+const onSave = () => {
+  inputValidation();
+}
+
 const inputValidation = () => {
   const validation = {};
   if (document.querySelector('#surname').value) validation.surname = true;
   if (document.querySelector('#name').value) validation.name = true;
-
-
 }
