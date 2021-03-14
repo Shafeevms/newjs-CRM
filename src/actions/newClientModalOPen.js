@@ -87,6 +87,16 @@ const onSave = () => {
   inputValidation();
 }
 
+const createClientObj = () => {
+  const newClient = {};
+  newClient.firstName = document.querySelector('#name').value;
+  newClient.surname = document.querySelector('#surname').value;
+  newClient.lastName = document.querySelector('#lastname').value;
+
+
+
+}
+
 const inputValidation = () => {
   const validation = {};
   if (document.querySelector('#surname').value) validation.surname = true;
