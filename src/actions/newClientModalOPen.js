@@ -30,6 +30,7 @@ const addListeners = (e) => {
 }
 
 const clickButtonListeners = (e) => {
+  e.preventDefault();
     const parent = e.target.closest('li');
     if (e.target.classList.contains('close-modal') || e.target.classList.contains('btn__del-client')) {
       closeModal();
@@ -43,7 +44,7 @@ const clickButtonListeners = (e) => {
         document.querySelector('.add__contact').classList.remove('add__contact-padding');
       }
     } else if (e.target.classList.contains('btn__save-client')) {
-      onSave();
+      onSave(e);
     }
 }
 
@@ -83,19 +84,40 @@ const addClearInputButton = (ev) => {
 // если true отправить объект на сервер
 // из сервера отрисовать новый список
 
-const onSave = () => {
+const onSave = (e) => {
   inputValidation();
+  createClientObj(e);
 }
 
 const createClientObj = () => {
   const newClient = {};
+  const newClientContacts = document.querySelectorAll('.add-social__item');
   newClient.firstName = document.querySelector('#name').value;
   newClient.surname = document.querySelector('#surname').value;
   newClient.lastName = document.querySelector('#lastname').value;
-
-
-
+  if (newClientContacts.length > 0) {
+    console.log(newClientContacts);
+    newClient.contacts = newClientContacts.map(el => {     //! сделать из коллекции массив
+        console.log(el.querySelector('.add-social-select').value);
+      return {
+        type: el.querySelector('.add-social-select').value,
+        value: el.querySelector('.add-social__input').value
+      }
+    })
+  }
+  console.log(newClient);
+  return newClient;
 }
+
+//! Разобраться с FormData
+// const formData = (e) => {
+//   const modalForm = document.querySelector('.modal__form-input');
+//   const newClient = new FormData(modalForm);
+//   console.log(modalForm);
+//   console.log(newClient.entries());
+// }
+
+
 
 const inputValidation = () => {
   const validation = {};

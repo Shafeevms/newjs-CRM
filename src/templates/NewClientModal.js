@@ -9,13 +9,13 @@ export const NewClientModal = () => (
       <form action="#" class="modal__form-input">
         <label class="input-descr" for="surname">Фамилия*
         </label>
-        <input type="text" class="modal__input" id="surname">
+        <input type="text" class="modal__input" id="surname" name="surname">
         <label class="input-descr" for="name">Имя*
         </label>
-        <input type="text" class="modal__input" id="name">
+        <input type="text" class="modal__input" id="name" name="name">
         <label class="input-descr" for="lastname">Отчество
         </label>
-        <input type="text" class="modal__input" id="lastname">
+        <input type="text" class="modal__input" id="lastname" name="lastname">
       </form>
     </div>
     <div class="add__contact">
