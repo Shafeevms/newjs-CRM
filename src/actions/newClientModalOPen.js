@@ -5,17 +5,7 @@ import { store } from "../store";
 
 
 const socialContactOptions = [];
-const newClient = {
-  firstName: '',
-  surname: '',
-  lastName: '',
-  contacts: [
-    {
-      type: '',
-      value: ''
-    }
-  ]
-}
+let newClient = {};
 
 
 export const newClientModalOPen = (e) => {
@@ -85,8 +75,10 @@ const addClearInputButton = (ev) => {
 // из сервера отрисовать новый список
 
 const onSave = (e) => {
-  inputValidation();
-  createClientObj(e);
+  // let isValid = true;
+  newClient = createClientObj();
+  inputValidation(newClient);
+  console.log(isValid)
 }
 
 const createClientObj = () => {
@@ -96,16 +88,13 @@ const createClientObj = () => {
   newClient.surname = document.querySelector('#surname').value;
   newClient.lastName = document.querySelector('#lastname').value;
   if (newClientContacts.length > 0) {
-    console.log(newClientContacts);
-    newClient.contacts = newClientContacts.map(el => {     //! сделать из коллекции массив
-        console.log(el.querySelector('.add-social-select').value);
+    newClient.contacts = Array.from(newClientContacts).map(el => {
       return {
         type: el.querySelector('.add-social-select').value,
         value: el.querySelector('.add-social__input').value
       }
     })
   }
-  console.log(newClient);
   return newClient;
 }
 
@@ -119,8 +108,22 @@ const createClientObj = () => {
 
 
 
-const inputValidation = () => {
-  const validation = {};
-  if (document.querySelector('#surname').value) validation.surname = true;
-  if (document.querySelector('#name').value) validation.name = true;
+const inputValidation = (obj) => {
+  console.log(isValid)
+  if(!obj.surname) {
+    obj.surname = false;
+    isValid = false;
+  }
+  if(obj.firstName) {
+    obj.firstName = false
+    isValid = false;
+  }
+  if (obj.contacts) {
+    obj.contacts.forEach(el => {
+      if (!el.value) {
+        obj.contacts = false;
+        isValid = false;
+      }
+    })
+  }
 }
