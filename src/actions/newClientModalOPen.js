@@ -4,8 +4,7 @@ import { render } from "./render";
 import { store } from "../store";
 
 const socialContactOptions = [];
-let newClient = {};
-let isValid = true;
+const newClient = {};
 
 export const newClientModalOPen = (e) => {
   e.preventDefault();
@@ -76,8 +75,12 @@ const addClearInputButton = (ev) => {
 
 const onSave = (e) => {
   newClient = createClientObj();
-  inputValidation(newClient);
-  console.log(newClient)
+  const formValid = inputValidation(newClient);
+  if (!formValid.isValid) {
+    console.log(formValid)
+  } else console.log('save new client')
+
+
 }
 
 const createClientObj = () => {
@@ -106,21 +109,26 @@ const createClientObj = () => {
 // }
 
 const inputValidation = (obj) => {
-  console.log(isValid)
+  const formValid = {
+    isValid: true
+  }
   if(!obj.surname) {
-    obj.surname = false;
-    isValid = false;
+    formValid.surname = false;
+    formValid.isValid = false;
   }
   if(!obj.firstName) {
-    obj.firstName = false
-    isValid = false;
+    formValid.firstName = false
+    formValid.isValid = false;
   }
   if (obj.contacts) {
-    obj.contacts.forEach(el => {
+    obj.contacts.forEach((el, index) => {
       if (!el.value) {
-        el.value = false;
-        isValid = false;
+        formValid.contacts[index] = false;
+        formValid.isValid = false;
       }
     })
   }
+  return formValid;
 }
+
+
