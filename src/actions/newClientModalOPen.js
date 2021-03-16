@@ -3,10 +3,9 @@ import { ItemOfSocialContacts } from '../templates/AddSocialContacts';
 import { render } from "./render";
 import { store } from "../store";
 
-
 const socialContactOptions = [];
 let newClient = {};
-
+let isValid = true;
 
 export const newClientModalOPen = (e) => {
   e.preventDefault();
@@ -66,19 +65,19 @@ const addClearInputButton = (ev) => {
   }
 }
 
-
 //? сохранить - алгоритм:
 // сначала заполнить объект из полей модального окна
 // потом уже к объекту приминить валидацию
 // если false добавить красное примечание в поле
+// пробегается по объекту, где видит false добавляет в value 'заполните поле' красным цветом
+
 // если true отправить объект на сервер
 // из сервера отрисовать новый список
 
 const onSave = (e) => {
-  // let isValid = true;
   newClient = createClientObj();
   inputValidation(newClient);
-  console.log(isValid)
+  console.log(newClient)
 }
 
 const createClientObj = () => {
@@ -106,22 +105,20 @@ const createClientObj = () => {
 //   console.log(newClient.entries());
 // }
 
-
-
 const inputValidation = (obj) => {
   console.log(isValid)
   if(!obj.surname) {
     obj.surname = false;
     isValid = false;
   }
-  if(obj.firstName) {
+  if(!obj.firstName) {
     obj.firstName = false
     isValid = false;
   }
   if (obj.contacts) {
     obj.contacts.forEach(el => {
       if (!el.value) {
-        obj.contacts = false;
+        el.value = false;
         isValid = false;
       }
     })
