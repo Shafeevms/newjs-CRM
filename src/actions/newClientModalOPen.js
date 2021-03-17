@@ -4,7 +4,7 @@ import { render } from "./render";
 import { store } from "../store";
 
 const socialContactOptions = [];
-const newClient = {};
+let newClient = {};
 
 export const newClientModalOPen = (e) => {
   e.preventDefault();
@@ -110,7 +110,8 @@ const createClientObj = () => {
 
 const inputValidation = (obj) => {
   const formValid = {
-    isValid: true
+    isValid: true,
+    contacts:[]
   }
   if(!obj.surname) {
     formValid.surname = false;
