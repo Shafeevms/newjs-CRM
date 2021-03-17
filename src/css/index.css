@@ -403,3 +403,8 @@ ul {
   animation: spin .5s linear infinite;
 }
 
+.alert {
+  color: rgb(180, 20, 20);
+  border-color: rgb(180, 20, 20);
+  box-shadow: 1px -1px 1px rgb(180, 20, 20);
+}

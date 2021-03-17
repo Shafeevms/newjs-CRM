@@ -2,9 +2,11 @@ import { NewClientModal } from "../templates/NewClientModal";
 import { ItemOfSocialContacts } from '../templates/AddSocialContacts';
 import { render } from "./render";
 import { store } from "../store";
+import { addClient } from '../api/api';
+import { renderAllClients } from './didMount';
 
 const socialContactOptions = [];
-let newClient = {};
+const alert = 'заполните поле!';
 
 export const newClientModalOPen = (e) => {
   e.preventDefault();
@@ -31,9 +33,17 @@ const clickButtonListeners = (e) => {
         document.querySelector('.add-social').classList.add('d-none');
         document.querySelector('.add__contact').classList.remove('add__contact-padding');
       }
+    } else if (e.target.classList.contains('alert')) {
+      clearAlert(e);
     } else if (e.target.classList.contains('btn__save-client')) {
       onSave(e);
     }
+}
+
+const clearAlert = (e) => {
+  e.target.classList.remove('alert');
+  e.target.value = '';
+  e.target.nextElementSibling.classList.remove('d-none');
 }
 
 const closeModal = () => {
@@ -74,19 +84,39 @@ const addClearInputButton = (ev) => {
 // из сервера отрисовать новый список
 
 const onSave = (e) => {
-  newClient = createClientObj();
+  let newClient = {...createClientObj()};
   const formValid = inputValidation(newClient);
   if (!formValid.isValid) {
-    console.log(formValid)
-  } else console.log('save new client')
+    alertValidation(formValid, e);
+  } else {
+    console.log(newClient)
+    addClient(newClient);
+    renderAllClients();
+  }
+}
 
-
+const alertValidation = (obj, e) => {
+  const parent = e.target.parentElement;
+  if (!obj.surname) {
+    parent.querySelector('#surname').value = alert;
+    parent.querySelector('#surname').classList.add('alert');
+  }
+  if (!obj.firstName) {
+    parent.querySelector('#name').value = alert;
+    parent.querySelector('#name').classList.add('alert');
+  }
+  obj.contacts.forEach((el, index) => {
+    if (!el) {
+      document.querySelectorAll('.add-social__input')[index].value = alert;
+      document.querySelectorAll('.add-social__input')[index].classList.add('alert');
+    }
+  })
 }
 
 const createClientObj = () => {
   const newClient = {};
   const newClientContacts = document.querySelectorAll('.add-social__item');
-  newClient.firstName = document.querySelector('#name').value;
+  newClient.name = document.querySelector('#name').value;
   newClient.surname = document.querySelector('#surname').value;
   newClient.lastName = document.querySelector('#lastname').value;
   if (newClientContacts.length > 0) {
@@ -100,33 +130,27 @@ const createClientObj = () => {
   return newClient;
 }
 
-//! Разобраться с FormData
-// const formData = (e) => {
-//   const modalForm = document.querySelector('.modal__form-input');
-//   const newClient = new FormData(modalForm);
-//   console.log(modalForm);
-//   console.log(newClient.entries());
-// }
-
 const inputValidation = (obj) => {
   const formValid = {
     isValid: true,
+    surname: true,
+    name: true,
     contacts:[]
   }
-  if(!obj.surname) {
+  if(!obj.surname || obj.surname === alert) {
     formValid.surname = false;
     formValid.isValid = false;
   }
-  if(!obj.firstName) {
-    formValid.firstName = false
+  if(!obj.name || obj.name === alert) {
+    formValid.name = false
     formValid.isValid = false;
   }
   if (obj.contacts) {
     obj.contacts.forEach((el, index) => {
-      if (!el.value) {
+      if (!el.value || el.value === alert) {
         formValid.contacts[index] = false;
         formValid.isValid = false;
-      }
+      } else formValid.contacts[index] = true;
     })
   }
   return formValid;
