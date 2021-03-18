@@ -3,3 +3,5 @@ export const itemsToRender = (array, component) => {
     return acc += component(item);
   }, '')
 }
+
+export const convertISO = iso => new Date(iso);

@@ -1,4 +1,6 @@
-export const ClientLine = ({ id, surname, name, lastName }) => (
+import { convertISO } from './index';
+
+export const ClientLine = ({ id, surname, name, lastName, createdAt, updatedAt }) => (
   `<li class="clients-item">
     <ul class="client__list row no-gutters">
       <li class="client__item col-md-1">
@@ -8,12 +10,12 @@ export const ClientLine = ({ id, surname, name, lastName }) => (
         <h2 class="client__title">${surname} ${name} ${lastName}</h2>
       </li>
       <li class="client__item  col-md-2">
-        <h2 class="client__title">21.02.21</h2>
-        <span class="time">12:02</span>
+        <h2 class="client__title">${convertISO(createdAt).toLocaleDateString()}</h2>
+        <span class="time">${convertISO(createdAt).toLocaleTimeString().slice(0, 5)}</span>
       </li>
       <li class="client__item col-md-2">
-        <h2 class="client__title">21.02.21</h2>
-        <span class="time">12:02</span>
+        <h2 class="client__title">${convertISO(updatedAt).toLocaleDateString()}</h2>
+        <span class="time">${convertISO(updatedAt).toLocaleTimeString().slice(0, 5)}</span>
       </li>
       <li class="client__item-social col-md-2">
         <ul class="social flex">
@@ -38,26 +40,3 @@ export const ClientLine = ({ id, surname, name, lastName }) => (
     </ul>
   </li>`
 )
-
-// {
-//   id: '1234567890', // ID клиента, заполняется сервером автоматически, после создания нельзя изменить
-//   firstName: 'Василий', // * обязательное поле, имя клиента
-//   surname: 'Пупкин', // * обязательное поле, фамилия клиента
-//   lastName: 'Васильевич', // необязательное поле, отчество клиента
-//   // контакты - необязательное поле, массив контактов
-//   // каждый объект в массиве (если он передан) должен содержать непустые свойства type и value
-//   contacts: [
-//     {
-//       type: 'Телефон',
-//       value: '+71234567890'
-//     },
-//     {
-//       type: 'Email',
-//       value: 'abc@xyz.com'
-//     },
-//     {
-//       type: 'Facebook',
-//       value: 'https://facebook.com/vasiliy-pupkin-the-best'
-//     }
-//   ]
-// }

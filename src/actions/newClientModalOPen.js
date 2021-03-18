@@ -7,6 +7,7 @@ import { inputValidation, alertValidation, clearAlert } from './formValidation';
 
 const socialContactOptions = [];
 
+
 export const newClientModalOPen = (e) => {
   e.preventDefault();
   document.querySelector('.modal').classList.remove('d-none');
