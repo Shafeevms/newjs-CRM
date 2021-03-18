@@ -1,6 +1,3 @@
-import { NewClientModal } from '../templates/NewClientModal';
-import { render } from '../actions/render';
-
 export const store = {
   actions: {
     DOMContentLoaded: null,
@@ -9,7 +6,7 @@ export const store = {
   clients: [
     {
     id: '1234567890',
-    firstName: 'Василий',
+    name: 'Василий',
     surname: 'Пупкин', // * обязательное поле, фамилия клиента
     lastName: 'Васильевич', // необязательное поле, отчество клиента
     // контакты - необязательное поле, массив контактов
@@ -31,7 +28,7 @@ export const store = {
     },
     {
       id: '1234567890',
-      firstName: 'Сергей',
+      name: 'Сергей',
       surname: 'Пупкин', // * обязательное поле, фамилия клиента
       lastName: 'Васильевич', // необязательное поле, отчество клиента
       // контакты - необязательное поле, массив контактов

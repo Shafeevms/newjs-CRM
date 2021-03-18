@@ -1,11 +1,11 @@
-export const ClientLine = ({ id, surname, firstName, lastName }) => (
+export const ClientLine = ({ id, surname, name, lastName }) => (
   `<li class="clients-item">
     <ul class="client__list row no-gutters">
       <li class="client__item col-md-1">
         <h2 class="client__title client__title-id">${id}</h2>
       </li>
       <li class="client__item col-md-3">
-        <h2 class="client__title">${surname} ${firstName} ${lastName}</h2>
+        <h2 class="client__title">${surname} ${name} ${lastName}</h2>
       </li>
       <li class="client__item  col-md-2">
         <h2 class="client__title">21.02.21</h2>
