@@ -107,6 +107,11 @@ ul {
   align-items: center;
 }
 
+.social__item {
+  width: 16px;
+  height: 16px;
+}
+
 .social__item:not(:nth-child(5n)) {
   margin-right: 7px;
 }
@@ -407,4 +412,27 @@ ul {
   color: rgb(180, 20, 20);
   border-color: rgb(180, 20, 20);
   box-shadow: 1px -1px 1px rgb(180, 20, 20);
+}
+
+
+/* social  */
+
+.fb {
+  background: url('../img/fb.svg');
+}
+
+.tel {
+  background: url('../img/phone.svg');
+}
+
+.mail {
+  background: url('../img/mail.svg');
+}
+
+.mail2 {
+  background: url('../img/mail-2.svg');
+}
+
+.vk {
+  background: url('../img/vk.svg');
 }
