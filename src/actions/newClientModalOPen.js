@@ -76,6 +76,7 @@ const onSave = (e) => {
   } else {
     addClient(newClient);
     renderAllClients();
+    closeModal();
   }
 }
 

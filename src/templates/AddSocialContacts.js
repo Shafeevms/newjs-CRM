@@ -2,11 +2,11 @@
 export const ItemOfSocialContacts = () => (
   `   <img src="./img/social-arrow.png" class="option-img">
       <select name="social" class="add-social-select">
-        <option value="Телефон" class="add-social__option">Телефон</option>
-        <option value="Доп. телефон" class="add-social__option">Доп. телефон</option>
-        <option value="Email" class="add-social__option">Email</option>
-        <option value="Vk" class="add-social__option">Vk</option>
-        <option value="Facebook" class="add-social__option">Facebook</option>
+        <option value="tel" class="add-social__option">Телефон</option>
+        <option value="mail" class="add-social__option">Email</option>
+        <option value="mail2" class="add-social__option">Дополнительная почта</option>
+        <option value="vk" class="add-social__option">Vk</option>
+        <option value="fb" class="add-social__option">Facebook</option>
       </select>
       <input type="text" class="add-social__input">
       <button class="add-social__btn-clear d-none"><svg class="btn-clear-svg" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,5 +15,3 @@ export const ItemOfSocialContacts = () => (
       </button>`
 )
 
-
-//'rotate', 'd-none'

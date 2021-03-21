@@ -162,6 +162,10 @@ ul {
   color: #9873FF;
   border: 1px solid #9873FF;
 }
+.btn-icon,
+.btn-add__icon {
+  pointer-events: none;
+}
 
 /* MODAL */
 

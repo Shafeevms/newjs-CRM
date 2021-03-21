@@ -1,6 +1,6 @@
-import { convertISO } from './index';
+import { convertISO, liFiller } from './index';
 
-export const ClientLine = ({ id, surname, name, lastName, createdAt, updatedAt }) => (
+export const ClientLine = ({ id, surname, name, lastName, createdAt, updatedAt, contacts }) => (
   `<li class="clients-item">
     <ul class="client__list row no-gutters">
       <li class="client__item col-md-1">
@@ -19,16 +19,7 @@ export const ClientLine = ({ id, surname, name, lastName, createdAt, updatedAt }
       </li>
       <li class="client__item-social col-md-2">
         <ul class="social flex">
-          <li class="social__item fb myButton"></li>
-          <li class="social__item myButton1"></li>
-          <li class="social__item"></li>
-          <li class="social__item"></li>
-          <li class="social__item"></li>
-          <li class="social__item"></li>
-          <li class="social__item"></li>
-          <li class="social__item"></li>
-          <li class="social__item"></li>
-          <li class="social__item vk"></li>
+          ${liFiller(contacts, id)}
         </ul>
       </li>
       <li class="client__item col-md-1">
@@ -41,13 +32,3 @@ export const ClientLine = ({ id, surname, name, lastName, createdAt, updatedAt }
   </li>`
 )
 
-{/* <li class="social__item myButton"><img src="./img/vk.svg" alt="vk"></li>
-    <li class="social__item myButton1"><img src="./img/fb.svg" alt="fb"></li>
-    <li class="social__item"><img src="./img/phone.svg" alt="phone"></li>
-    <li class="social__item"><img src="./img/mail.svg" alt="mail"></li>
-    <li class="social__item"><img src="./img/mail-2.svg" alt="mail"></li>
-    <li class="social__item"><img src="./img/vk.svg" alt="vk"></li>
-    <li class="social__item"><img src="./img/fb.svg" alt="fb"></li>
-    <li class="social__item"><img src="./img/phone.svg" alt="phone"></li>
-    <li class="social__item"><img src="./img/mail.svg" alt="mail"></li>
-    <li class="social__item"><img src="./img/mail-2.svg" alt="mail"></li> */}
