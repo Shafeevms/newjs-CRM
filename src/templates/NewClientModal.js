@@ -1,6 +1,6 @@
 export const NewClientModal = () => (
   `
-  <button class="close-modal"></button>
+  <button class="close close-modal"></button>
   <div aria-modal="new-window" class="new-data">
     <div class="modal__container">
       <div class="title__wrapper">
@@ -25,7 +25,7 @@ export const NewClientModal = () => (
       <button class="btn__add-contact"><img src="./img/add-contact.svg" alt="добавить контакт" class="add__contact-icon">Добавить контакт</button>
     </div>
     <button class="btn__save-client">Сохранить</button>
-    <button class="btn__del-client">Отмена</button>
+    <button class="close btn__del-client">Отмена</button>
   </div>`
 )
 

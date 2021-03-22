@@ -1,12 +1,13 @@
 import { ChangeModal } from "../templates/ChangeModal";
-import { render, renderAllClients } from "./render";
+import { render } from "./render";
 import { store } from '../store';
+import { addChangeListeners } from './addChangeListeners';
 
 export const changeModalOPen = (e) => {
   e.preventDefault();
   document.querySelector('.modal').classList.remove('d-none');
   render('.modal__body', ChangeModal(thisClient(e)));
-  // addListeners(e);
+  addChangeListeners(e);
 }
 
 const thisClient = e => {
