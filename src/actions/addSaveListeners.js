@@ -32,7 +32,7 @@ const clickButtonListeners = (e) => {
 }
 
 
-const closeModal = () => {
+  export const closeModal = () => {
   socialContactOptions.length = 0;
   document.querySelector('.modal').classList.add('d-none');
   document.querySelector('.modal').removeEventListener('click', clickButtonListeners);

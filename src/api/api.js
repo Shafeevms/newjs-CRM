@@ -9,8 +9,8 @@ export const addClient = (clientToADD) => {
   })
 }
 
-export const changeClient = (id, newClient) => {
-  fetch(`${URL}/${id}`, {
+export const changeClient = (newClient) => {
+  fetch(`${URL}/${newClient.id}`, {
     method: 'PATCH',
     body: JSON.stringify(newClient)
   })

@@ -1,9 +1,10 @@
 import { ItemOfSocialContacts } from '../templates/AddSocialContacts';
 import { renderAllClients } from "./render";
 import { store } from "../store";
-import { addClient } from '../api/api';
+import { changeClient } from '../api/api';
 import { inputValidation, alertValidation, clearAlert } from './formValidation';
 
+// здесь нужно передать реальное число дляины
 const socialContactOptions = [];
 
 export const addChangeListeners = (e) => {
@@ -27,7 +28,7 @@ const clickButtonListeners = (e) => {
     } else if (e.target.classList.contains('alert')) {
       clearAlert(e);
     } else if (e.target.classList.contains('btn__save-client')) {
-      onSave(e);
+      onSaveEdited(e);
     }
 }
 
@@ -60,13 +61,13 @@ const addClearInputButton = (ev) => {
   }
 }
 
-const onSave = (e) => {
+const onSaveEdited = (e) => {
   let newClient = createClientObj();
   const formValid = inputValidation(newClient);
   if (!formValid.isValid) {
     alertValidation(formValid, e);
   } else {
-    addClient(newClient);
+    changeClient(newClient);
     renderAllClients();
     closeModal();
   }
@@ -75,6 +76,7 @@ const onSave = (e) => {
 const createClientObj = () => {
   const newClient = {};
   const newClientContacts = document.querySelectorAll('.add-social__item');
+  newClient.id = document.querySelector('.modal__id').innerText;
   newClient.name = document.querySelector('#name').value;
   newClient.surname = document.querySelector('#surname').value;
   newClient.lastName = document.querySelector('#lastname').value;

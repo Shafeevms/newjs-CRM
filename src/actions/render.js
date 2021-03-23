@@ -16,8 +16,8 @@ export const render = (selector, component) => document.querySelector(`${selecto
 // }
 
 export const renderAllClients = () => {
-  getClients().then(() => {
-    console.log(store);
+    getClients().then(() => {
+    console.log('стор заменён', store);
     render('.clients-list', itemsToRender(store.clients, ClientLine));
     tooltipsInit(store);
     addGlobalListeners();

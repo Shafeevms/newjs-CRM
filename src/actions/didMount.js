@@ -2,8 +2,8 @@ import { store } from '../store';
 import { render, renderAllClients } from '../actions/render';
 import { Loader } from '../templates/Loader';
 import { newClientModalOPen } from './newClientModalOPen';
-import { onDelete } from './onDelete';
 import { onEdit } from './onEdit';
+import { removeClient } from './removeClient';
 
 
 const DOMContentLoaded = () => {
@@ -23,7 +23,7 @@ export const addGlobalListeners = () => {
       newClientModalOPen(e);
     }
     if (e.target.classList.contains('cancel')) {
-      onDelete(e);
+      removeClient(e);
     }
     if (e.target.classList.contains('edit')) {
       onEdit(e);

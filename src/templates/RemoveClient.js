@@ -1,7 +1,7 @@
-export const NewClient = () => (
+export const RemoveClient = () => (
   `<div aria-modal="change-window" class="change__data">
     <div class="modal__container modal__container-new">
-      <h2 class="modal__title">Новый клиент</h2>
+      <h2 class="modal__title">Удалить клиента</h2>
       <p class="modal__text">
         Вы действительно хотите удалить данного клиента?
       </p>
