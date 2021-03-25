@@ -14,27 +14,29 @@ export const addChangeListeners = (e, currentClient) => {
 
 const clickButtonListeners = (e) => {
   e.preventDefault();
+  console.log('hello');
   const parent = e.target.closest('li');
   if (e.target.classList.contains('close')) {
-    closeModal();
+    closeModal(); // работает
     document.querySelector('.body').removeEventListener('click', clickButtonListeners);
   } else if (e.target.classList.contains('btn__add-contact')) {
-    addExtraContact(e);
+    addExtraContact(e); // работает
   } else if (e.target.classList.contains('add-social__btn-clear')) {
-    parent.remove();
+    parent.remove(); // работает
     client.contacts.pop();
     if (client.contacts.length === 0) {
       document.querySelector('.add-social').classList.add('d-none');
       document.querySelector('.add__contact').classList.remove('add__contact-padding');
     }
   } else if (e.target.classList.contains('alert')) {
-    clearAlert(e);
+    clearAlert(e); // не работает
   } else if (e.target.classList.contains('btn__save-client')) {
-    onSaveEdited(e);
+    onSaveEdited(e); // check it
     document.querySelector('.body').removeEventListener('click', clickButtonListeners);
   } else if (e.target.classList.contains('btn__del-client')) {
+    console.log('delete');
     closeModal();
-    removeClient(e);
+    removeClient(e, client.id);
     document.querySelector('.body').removeEventListener('click', clickButtonListeners);
   }
 }

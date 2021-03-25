@@ -3,10 +3,10 @@ import { renderAllClients, render } from './render';
 import { RemoveClient } from "../templates/RemoveClient";
 
 let currentId;
-export const removeClient = (e) => {
+export const removeClient = (e, id) => {
   e.preventDefault();
   const parent = e.target.closest('ul');
-  currentId = parent.querySelector('.client__title-id').innerHTML;
+  currentId = parent.querySelector('.client__title-id').innerHTML || id;
   document.querySelector('.modal').classList.remove('d-none');
   render('.modal__body', RemoveClient());
   document.querySelector('.body').addEventListener('click', clickButtonListeners);
