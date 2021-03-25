@@ -69,6 +69,7 @@ const onSave = (e) => {
     addClient(newClient);
     renderAllClients();
     closeModal();
+    document.querySelector('.modal').removeEventListener('click', clickButtonListeners);
   }
 }
 

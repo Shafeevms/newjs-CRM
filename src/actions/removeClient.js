@@ -16,17 +16,19 @@ const clickButtonListeners = (e) => {
   e.preventDefault();
     if (e.target.classList.contains('btn__del-client')) {
       closeModal();
+      document.querySelector('.body').removeEventListener('click', clickButtonListeners);
     } else if (e.target.classList.contains('btn__save-client')) {
-      onDelete(currentId);
-      console.log('удален')
+      onDelete(currentId).then(() => {
       renderAllClients();
+      console.log('удален');
+      document.querySelector('.body').removeEventListener('click', clickButtonListeners);
+      })
     }
 }
 
-// доработать есть ошибки
   const onDelete = (currentId) => {
-  deleteClient(currentId);
-  closeModal();
+    closeModal();
+    return deleteClient(currentId);
 }
 
 const closeModal = () => {

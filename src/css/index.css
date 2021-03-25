@@ -167,6 +167,16 @@ ul {
   pointer-events: none;
 }
 
+.hover {
+  cursor: pointer;
+  transition: background-color .8s ease-out;
+}
+
+.hover:hover {
+  background-color: #d1c6f32e;
+  outline: 1px solid #d1c6f36f;
+}
+
 /* MODAL */
 
 .modal {

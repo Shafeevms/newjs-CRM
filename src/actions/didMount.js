@@ -9,6 +9,7 @@ import { removeClient } from './removeClient';
 const DOMContentLoaded = () => {
   render('.clients-list', Loader());
   renderAllClients();
+  addGlobalListeners();
 }
 
 export const didMount = () => {
@@ -28,6 +29,10 @@ export const addGlobalListeners = () => {
     if (e.target.classList.contains('edit')) {
       onEdit(e);
     }
+    if (e.target.classList.contains('head__title-id')) {
+      console.log('sort by id')
+    }
+
   })
 }
 

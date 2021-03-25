@@ -3,48 +3,54 @@ import { renderAllClients } from "./render";
 import { store } from "../store";
 import { changeClient } from '../api/api';
 import { inputValidation, alertValidation, clearAlert } from './formValidation';
+import { removeClient } from './removeClient';
 
-// здесь нужно передать реальное число дляины
-const socialContactOptions = [];
+let client;
 
-export const addChangeListeners = (e) => {
-  document.querySelector('.modal').addEventListener('click', clickButtonListeners)
+export const addChangeListeners = (e, currentClient) => {
+  client = currentClient;
+  document.querySelector('.modal').addEventListener('click', clickButtonListeners);
 }
 
 const clickButtonListeners = (e) => {
   e.preventDefault();
-    const parent = e.target.closest('li');
-    if (e.target.classList.contains('close')) {
-      closeModal();
-    } else if (e.target.classList.contains('btn__add-contact')) {
-      addExtraContact(e);
-    } else if (e.target.classList.contains('add-social__btn-clear')) {
-      parent.remove();
-      socialContactOptions.pop();
-      if (socialContactOptions.length === 0) {
-        document.querySelector('.add-social').classList.add('d-none');
-        document.querySelector('.add__contact').classList.remove('add__contact-padding');
-      }
-    } else if (e.target.classList.contains('alert')) {
-      clearAlert(e);
-    } else if (e.target.classList.contains('btn__save-client')) {
-      onSaveEdited(e);
+  const parent = e.target.closest('li');
+  if (e.target.classList.contains('close')) {
+    closeModal();
+    document.querySelector('.body').removeEventListener('click', clickButtonListeners);
+  } else if (e.target.classList.contains('btn__add-contact')) {
+    addExtraContact(e);
+  } else if (e.target.classList.contains('add-social__btn-clear')) {
+    parent.remove();
+    client.contacts.pop();
+    if (client.contacts.length === 0) {
+      document.querySelector('.add-social').classList.add('d-none');
+      document.querySelector('.add__contact').classList.remove('add__contact-padding');
     }
+  } else if (e.target.classList.contains('alert')) {
+    clearAlert(e);
+  } else if (e.target.classList.contains('btn__save-client')) {
+    onSaveEdited(e);
+    document.querySelector('.body').removeEventListener('click', clickButtonListeners);
+  } else if (e.target.classList.contains('btn__del-client')) {
+    closeModal();
+    removeClient(e);
+    document.querySelector('.body').removeEventListener('click', clickButtonListeners);
+  }
 }
 
-
 const closeModal = () => {
-  socialContactOptions.length = 0;
+  client.contacts.length = 0;
   document.querySelector('.modal').classList.add('d-none');
   document.querySelector('.modal').removeEventListener('click', clickButtonListeners);
   document.querySelector('.add-social').removeEventListener('input', addClearInputButton);
 }
 
 const addExtraContact = (e) => {
-  socialContactOptions.push(ItemOfSocialContacts());
-  if (socialContactOptions.length <= store.quantityOfAddContactsInModalWindow) {
+  // client.contacts.push(ItemOfSocialContacts());
+  if (client.contacts.length <= store.quantityOfAddContactsInModalWindow) {
     const li = document.createElement('li');
-    li.classList.add('add-social__item')
+    li.classList.add('add-social__item');
     li.innerHTML = ItemOfSocialContacts();
     document.querySelector('.add-social').appendChild(li);
   }
@@ -61,35 +67,64 @@ const addClearInputButton = (ev) => {
   }
 }
 
+// const onSaveEdited = (e) => {
+//   let newClient = createClientObj();
+//   const formValid = inputValidation(newClient);
+//   if (!formValid.isValid) {
+//     alertValidation(formValid, e);
+//   } else {
+//     changeClient(newClient).then(() => {
+//       renderAllClients();
+//       closeModal();
+//     })
+//   }
+// }
 const onSaveEdited = (e) => {
-  let newClient = createClientObj();
-  const formValid = inputValidation(newClient);
+  const formValid = inputValidation(client);
   if (!formValid.isValid) {
     alertValidation(formValid, e);
   } else {
-    changeClient(newClient);
-    renderAllClients();
-    closeModal();
+    changeClientObj();
+    changeClient(client).then(() => {
+      renderAllClients();
+      closeModal();
+    })
   }
 }
 
-const createClientObj = () => {
-  const newClient = {};
+const changeClientObj = () => {
+  client.name = document.querySelector('#name').value;
+  client.surname = document.querySelector('#surname').value;
+  client.lastName = document.querySelector('#lastname').value;
   const newClientContacts = document.querySelectorAll('.add-social__item');
-  newClient.id = document.querySelector('.modal__id').innerText;
-  newClient.name = document.querySelector('#name').value;
-  newClient.surname = document.querySelector('#surname').value;
-  newClient.lastName = document.querySelector('#lastname').value;
+  let contacts = [];
   if (newClientContacts.length > 0) {
-    newClient.contacts = Array.from(newClientContacts).map(el => {
+    contacts = Array.from(newClientContacts).map(el => {
       return {
         type: el.querySelector('.add-social-select').value,
         value: el.querySelector('.add-social__input').value
       }
     })
   }
-  return newClient;
+  client.contacts = [...client.contacts, ...contacts];
 }
+// const createClientObj = () => {
+//   const newClient = {};
+//   const newClientContacts = document.querySelectorAll('.add-social__item');
+//   newClient.id = document.querySelector('.modal__id').innerText;
+//   newClient.name = document.querySelector('#name').value;
+//   newClient.surname = document.querySelector('#surname').value;
+//   newClient.lastName = document.querySelector('#lastname').value;
+//   if (newClientContacts.length > 0) {
+//     newClient.contacts = Array.from(newClientContacts).map(el => {
+//       return {
+//         type: el.querySelector('.add-social-select').value,
+//         value: el.querySelector('.add-social__input').value
+//       }
+//     })
+//   }
+//   return newClient;
+// }
 
 
 

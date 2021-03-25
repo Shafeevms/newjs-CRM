@@ -10,14 +10,14 @@ export const addClient = (clientToADD) => {
 }
 
 export const changeClient = (newClient) => {
-  fetch(`${URL}/${newClient.id}`, {
+  return fetch(`${URL}/${newClient.id}`, {
     method: 'PATCH',
     body: JSON.stringify(newClient)
   })
 }
 
-export const deleteClient = id => {
-  fetch(`${URL}/${id}`, {
+export const deleteClient = (id) => {
+  return fetch(`${URL}/${id}`, {
     method: 'DELETE',
   })
 }

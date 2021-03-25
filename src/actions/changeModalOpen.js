@@ -7,7 +7,7 @@ export const changeModalOPen = (e) => {
   e.preventDefault();
   document.querySelector('.modal').classList.remove('d-none');
   render('.modal__body', ChangeModal(thisClient(e)));
-  addChangeListeners(e);
+  addChangeListeners(e, thisClient(e));
 }
 
 const thisClient = e => {
