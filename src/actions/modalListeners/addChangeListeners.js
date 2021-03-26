@@ -4,19 +4,22 @@ import { store } from "../../store";
 import { changeClient } from '../../api/api';
 import { inputValidation, alertValidation, clearAlert } from '../formValidation';
 import { removeClient } from '../clientActions/removeClient';
+import { closeModal } from './index.js';
+import { thisClientId } from '../modalListeners';
 
 export const addChangeListeners = () => {
   document.querySelector('.modal').addEventListener('click', clickButtonListeners);
+  thisClientId();
   // store.actions['clickButtonListeners'] = clickButtonListeners;
 }
 
 const clickButtonListeners = (e) => {
   e.preventDefault();
-  console.log('hello');
   const parent = e.target.closest('li');
   const target = e.target.classList;
+  console.log(target);
   if (target.contains('close')) {
-    closeModal(); // не работает
+    closeModal(); // работает
     document.querySelector('.body').removeEventListener('click', clickButtonListeners);
   } else if (target.contains('btn__add-contact')) {
     addExtraContact(e); // работает
@@ -38,13 +41,6 @@ const clickButtonListeners = (e) => {
     removeClient(e, client.id);
     document.querySelector('.body').removeEventListener('click', clickButtonListeners);
   }
-}
-
-const closeModal = () => {
-  client.contacts.length = 0;
-  document.querySelector('.modal').classList.add('d-none');
-  document.querySelector('.modal').removeEventListener('click', clickButtonListeners);
-  document.querySelector('.add-social').removeEventListener('input', addClearInputButton);
 }
 
 const addExtraContact = (e) => {

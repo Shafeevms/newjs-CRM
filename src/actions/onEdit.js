@@ -1,5 +1,6 @@
-import { changeModalOPen } from './clientActions/editClient';
+// import { changeModalOPen } from './clientActions/editClient';
 
-export const editClient = (e) => {
-  changeModalOPen(e);
-}
+// export const editClient = (e) => {
+//   console.log('onedit');
+//   changeModalOPen(e);
+// }
