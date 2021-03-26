@@ -1,7 +1,7 @@
 export const store = {
   actions: {
     DOMContentLoaded: null,
-    newClientModalOPen: null,
+    createClient: null,
   },
   clients: [
     {

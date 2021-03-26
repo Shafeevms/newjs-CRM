@@ -1,39 +1,38 @@
-import { ItemOfSocialContacts } from '../templates/AddSocialContacts';
-import { renderAllClients } from "./render";
-import { store } from "../store";
-import { changeClient } from '../api/api';
-import { inputValidation, alertValidation, clearAlert } from './formValidation';
-import { removeClient } from './removeClient';
+import { ItemOfSocialContacts } from '../../templates/AddSocialContacts';
+import { renderAllClients } from "../render";
+import { store } from "../../store";
+import { changeClient } from '../../api/api';
+import { inputValidation, alertValidation, clearAlert } from '../formValidation';
+import { removeClient } from '../clientActions/removeClient';
 
-let client;
-
-export const addChangeListeners = (e, currentClient) => {
-  client = currentClient;
+export const addChangeListeners = () => {
   document.querySelector('.modal').addEventListener('click', clickButtonListeners);
+  // store.actions['clickButtonListeners'] = clickButtonListeners;
 }
 
 const clickButtonListeners = (e) => {
   e.preventDefault();
   console.log('hello');
   const parent = e.target.closest('li');
-  if (e.target.classList.contains('close')) {
-    closeModal(); // работает
+  const target = e.target.classList;
+  if (target.contains('close')) {
+    closeModal(); // не работает
     document.querySelector('.body').removeEventListener('click', clickButtonListeners);
-  } else if (e.target.classList.contains('btn__add-contact')) {
+  } else if (target.contains('btn__add-contact')) {
     addExtraContact(e); // работает
-  } else if (e.target.classList.contains('add-social__btn-clear')) {
+  } else if (target.contains('add-social__btn-clear')) {
     parent.remove(); // работает
     client.contacts.pop();
     if (client.contacts.length === 0) {
       document.querySelector('.add-social').classList.add('d-none');
       document.querySelector('.add__contact').classList.remove('add__contact-padding');
     }
-  } else if (e.target.classList.contains('alert')) {
+  } else if (target.contains('alert')) {
     clearAlert(e); // не работает
-  } else if (e.target.classList.contains('btn__save-client')) {
+  } else if (target.contains('btn__save-client')) {
     onSaveEdited(e); // check it
     document.querySelector('.body').removeEventListener('click', clickButtonListeners);
-  } else if (e.target.classList.contains('btn__del-client')) {
+  } else if (target.contains('btn__del-client')) {
     console.log('delete');
     closeModal();
     removeClient(e, client.id);
