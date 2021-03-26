@@ -9,7 +9,6 @@ import { thisClientId } from '../modalListeners';
 
 export const addChangeListeners = () => {
   document.querySelector('.modal').addEventListener('click', clickButtonListeners);
-  thisClientId();
   // store.actions['clickButtonListeners'] = clickButtonListeners;
 }
 
@@ -44,7 +43,7 @@ const clickButtonListeners = (e) => {
 }
 
 const addExtraContact = (e) => {
-  // client.contacts.push(ItemOfSocialContacts());
+  store.client.contacts.push(ItemOfSocialContacts());
   if (client.contacts.length <= store.quantityOfAddContactsInModalWindow) {
     const li = document.createElement('li');
     li.classList.add('add-social__item');
