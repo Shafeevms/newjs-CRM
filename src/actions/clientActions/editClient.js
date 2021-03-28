@@ -7,8 +7,9 @@ import { thisClientId } from '../modalListeners/';
 export const editClient = (e) => {
   e.preventDefault();
   thisClientId(e);
-  const client = store.clients.find(el => el.id === store.currentId)
+  store.currentClient = store.clients.find(el => el.id === store.currentId);
+  store.socialContactsLength = store.currentClient.contacts.length;
   document.querySelector('.modal').classList.remove('d-none');
-  render('.modal__body', ChangeModal(client));
-  addChangeListeners(thisClientId(e));
+  render('.modal__body', ChangeModal(store.currentClient));
+  addChangeListeners();
 }

@@ -1,6 +1,7 @@
 import { NewClientModal } from "../../templates/NewClientModal";
 import { render } from "../render";
 import { addSaveListeners } from '../modalListeners/addSaveListeners';
+import { store } from "../../store";
 
 export const createClient = (e) => {
   e.preventDefault();

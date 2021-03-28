@@ -4,18 +4,22 @@ import { renderAllClients } from "../render";
 import { addClient } from '../../api/api';
 import { inputValidation, alertValidation } from '../formValidation';
 
-export const socialContactOptions = [];
+const { currentClient: { contacts } } = store;
 
 export const closeModal = () => {
-  socialContactOptions.length = 0;
+  delete store.currentClient;
   document.querySelector('.modal').classList.add('d-none');
   document.querySelector('.modal').removeEventListener('click', store.actions['clickButtonListeners']);
   document.querySelector('.add-social').removeEventListener('input', addClearInputButton);
 }
 
-export const addExtraContact = (e) => {
-  socialContactOptions.push(ItemOfSocialContacts());
-  if (socialContactOptions.length <= store.quantityOfAddContactsInModalWindow) {
+export const addExtraContact = () => {
+  const addLine = {
+    type: '',
+    value: ''
+  }
+  if (contacts.length < store.maxLength) {
+    contacts.push(addLine);
     const li = document.createElement('li');
     li.classList.add('add-social__item')
     li.innerHTML = ItemOfSocialContacts();
@@ -25,6 +29,21 @@ export const addExtraContact = (e) => {
   document.querySelector('.add__contact').classList.add('add__contact-padding');
   document.querySelector('.add-social').addEventListener('input', addClearInputButton);
 }
+// export const addExtraContact = () => {
+//   const addLine = {
+//     type: '',
+//     value: ''
+//   }
+//   if (contacts.length <= store.maxLength) {
+//     const li = document.createElement('li');
+//     li.classList.add('add-social__item')
+//     li.innerHTML = ItemOfSocialContacts();
+//     document.querySelector('.add-social').appendChild(li);
+//   }
+//   document.querySelector('.add-social').classList.remove('d-none');
+//   document.querySelector('.add__contact').classList.add('add__contact-padding');
+//   document.querySelector('.add-social').addEventListener('input', addClearInputButton);
+// }
 
 export const onSave = (e) => {
   let newClient = createClientObj();

@@ -49,7 +49,10 @@ export const store = {
       ]
     }
   ],
+  currentClient: {
+    contacts: []
+  },
   clientToADD: {},
-  quantityOfAddContactsInModalWindow: 5,
+  maxLength: 5,
 }
 

@@ -1,13 +1,12 @@
-import { ItemOfSocialContacts } from '../../templates/AddSocialContacts';
 import { renderAllClients } from "../render";
 import { store } from "../../store";
 import { changeClient } from '../../api/api';
 import { inputValidation, alertValidation, clearAlert } from '../formValidation';
 import { removeClient } from '../clientActions/removeClient';
-import { closeModal } from './index.js';
-import { thisClientId } from '../modalListeners';
+import { closeModal, addExtraContact } from './index.js';
 
 export const addChangeListeners = () => {
+  console.log('addChangeListeners')
   document.querySelector('.modal').addEventListener('click', clickButtonListeners);
   // store.actions['clickButtonListeners'] = clickButtonListeners;
 }
@@ -16,12 +15,14 @@ const clickButtonListeners = (e) => {
   e.preventDefault();
   const parent = e.target.closest('li');
   const target = e.target.classList;
-  console.log(target);
+  console.log(store.currentClient);
   if (target.contains('close')) {
     closeModal(); // работает
+    delete store.currentClient
+    console.log(store)
     document.querySelector('.body').removeEventListener('click', clickButtonListeners);
   } else if (target.contains('btn__add-contact')) {
-    addExtraContact(e); // работает
+    addExtraContact(); // не работает
   } else if (target.contains('add-social__btn-clear')) {
     parent.remove(); // работает
     client.contacts.pop();
@@ -42,18 +43,18 @@ const clickButtonListeners = (e) => {
   }
 }
 
-const addExtraContact = (e) => {
-  store.client.contacts.push(ItemOfSocialContacts());
-  if (client.contacts.length <= store.quantityOfAddContactsInModalWindow) {
-    const li = document.createElement('li');
-    li.classList.add('add-social__item');
-    li.innerHTML = ItemOfSocialContacts();
-    document.querySelector('.add-social').appendChild(li);
-  }
-  document.querySelector('.add-social').classList.remove('d-none');
-  document.querySelector('.add__contact').classList.add('add__contact-padding');
-  document.querySelector('.add-social').addEventListener('input', addClearInputButton);
-}
+// const addExtraContact = () => {
+//   store.currentClient.contacts.push(true);
+//   if (store.currentClient.contacts.length <= store.quantityOfAddContactsInModalWindow) {
+//     const li = document.createElement('li');
+//     li.classList.add('add-social__item');
+//     li.innerHTML = ItemOfSocialContacts();
+//     document.querySelector('.add-social').appendChild(li);
+//   }
+//   document.querySelector('.add-social').classList.remove('d-none');
+//   document.querySelector('.add__contact').classList.add('add__contact-padding');
+//   document.querySelector('.add-social').addEventListener('input', addClearInputButton);
+// }
 
 const addClearInputButton = (ev) => {
   if (ev.target.classList.contains('add-social__input')) {
