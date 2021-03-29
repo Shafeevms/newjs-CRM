@@ -1,6 +1,7 @@
 // изменить и удалить клиента
+import { additionalContactsFiller } from './index';
 
-export const ChangeModal = ({id, name, surname, lastName}) => (
+export const ChangeModal = ({id, name, surname, lastName, contacts}) => (
   `
   <button class="close close-modal"></button>
   <div aria-modal="change-window" class="change__data">
@@ -24,6 +25,7 @@ export const ChangeModal = ({id, name, surname, lastName}) => (
     <div class="add__contact">
       <ul class="modal__form-add-social add-social d-none">
       <!-- сюда вставляем ItemOfSocialContacts -->
+        ${additionalContactsFiller(contacts)}
       </ul>
       <button class="btn__add-contact"><img src="./img/add-contact.svg" alt="добавить контакт" class="add__contact-icon">Добавить контакт</button>
     </div>

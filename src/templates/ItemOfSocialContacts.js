@@ -1,4 +1,3 @@
-
 export const ItemOfSocialContacts = () => (
   `   <img src="./img/social-arrow.png" class="option-img">
       <select name="social" class="add-social-select">

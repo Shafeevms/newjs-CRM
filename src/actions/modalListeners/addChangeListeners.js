@@ -18,7 +18,6 @@ const clickButtonListeners = (e) => {
   console.log(store.currentClient);
   if (target.contains('close')) {
     closeModal(); // работает
-    delete store.currentClient
     console.log(store)
     document.querySelector('.body').removeEventListener('click', clickButtonListeners);
   } else if (target.contains('btn__add-contact')) {

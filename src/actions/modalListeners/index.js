@@ -1,5 +1,5 @@
 import { store } from "../../store";
-import { ItemOfSocialContacts } from '../../templates/AddSocialContacts';
+import { ItemOfSocialContacts } from '../../templates/ItemOfSocialContacts';
 import { renderAllClients } from "../render";
 import { addClient } from '../../api/api';
 import { inputValidation, alertValidation } from '../formValidation';
@@ -7,21 +7,22 @@ import { inputValidation, alertValidation } from '../formValidation';
 const { currentClient: { contacts } } = store;
 
 export const closeModal = () => {
-  delete store.currentClient;
   document.querySelector('.modal').classList.add('d-none');
   document.querySelector('.modal').removeEventListener('click', store.actions['clickButtonListeners']);
   document.querySelector('.add-social').removeEventListener('input', addClearInputButton);
+  delete store.currentClient;
 }
 
 export const addExtraContact = () => {
   const addLine = {
-    type: '',
-    value: ''
-  }
+        type: 'tel',
+        value: ''
+      }
+  store.currentClient = createClientObj();
   if (contacts.length < store.maxLength) {
     contacts.push(addLine);
     const li = document.createElement('li');
-    li.classList.add('add-social__item')
+    li.classList.add('add-social__item');
     li.innerHTML = ItemOfSocialContacts();
     document.querySelector('.add-social').appendChild(li);
   }
@@ -84,6 +85,6 @@ const createClientObj = () => {
         value: el.querySelector('.add-social__input').value
       }
     })
-  }
+  } else newClient.contacts = [];
   return newClient;
 }
