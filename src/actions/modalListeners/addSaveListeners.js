@@ -12,6 +12,7 @@ export const addSaveListeners = () => {
 
 const clickButtonListeners = (e) => {
   e.preventDefault();
+  const { currentClient: { contacts } } = store;
     const parent = e.target.closest('li');
     const target = e.target.classList;
     if (target.contains('close')) {

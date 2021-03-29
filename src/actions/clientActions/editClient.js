@@ -8,7 +8,6 @@ export const editClient = (e) => {
   e.preventDefault();
   thisClientId(e);
   store.currentClient = store.clients.find(el => el.id === store.currentId);
-  // store.socialContactsLength = store.currentClient.contacts.length;
   document.querySelector('.modal').classList.remove('d-none');
   render('.modal__body', ChangeModal(store.currentClient));
   addChangeListeners();

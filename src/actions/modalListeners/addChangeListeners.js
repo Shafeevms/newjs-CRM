@@ -8,22 +8,19 @@ import { closeModal, addExtraContact } from './index.js';
 export const addChangeListeners = () => {
   console.log('addChangeListeners')
   document.querySelector('.modal').addEventListener('click', clickButtonListeners);
-  // store.actions['clickButtonListeners'] = clickButtonListeners;
+  store.actions['clickButtonListeners'] = clickButtonListeners;
 }
 
 const clickButtonListeners = (e) => {
   e.preventDefault();
   const parent = e.target.closest('li');
   const target = e.target.classList;
-  console.log(store.currentClient);
   if (target.contains('close')) {
     closeModal(); // работает
-    console.log(store)
-    document.querySelector('.body').removeEventListener('click', clickButtonListeners);
   } else if (target.contains('btn__add-contact')) {
-    addExtraContact(); // не работает
+    addExtraContact(); // работает
   } else if (target.contains('add-social__btn-clear')) {
-    parent.remove(); // работает
+    parent.remove(); //!  не работает - не то удаляет
     client.contacts.pop();
     if (client.contacts.length === 0) {
       document.querySelector('.add-social').classList.add('d-none');
@@ -41,19 +38,6 @@ const clickButtonListeners = (e) => {
     document.querySelector('.body').removeEventListener('click', clickButtonListeners);
   }
 }
-
-// const addExtraContact = () => {
-//   store.currentClient.contacts.push(true);
-//   if (store.currentClient.contacts.length <= store.quantityOfAddContactsInModalWindow) {
-//     const li = document.createElement('li');
-//     li.classList.add('add-social__item');
-//     li.innerHTML = ItemOfSocialContacts();
-//     document.querySelector('.add-social').appendChild(li);
-//   }
-//   document.querySelector('.add-social').classList.remove('d-none');
-//   document.querySelector('.add__contact').classList.add('add__contact-padding');
-//   document.querySelector('.add-social').addEventListener('input', addClearInputButton);
-// }
 
 const addClearInputButton = (ev) => {
   if (ev.target.classList.contains('add-social__input')) {
