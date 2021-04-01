@@ -15,7 +15,8 @@ export const liFiller = (array, id) => {
 }
 
 export const additionalContactsFiller = array => {
-  return array.reduce((acc, element) => {
-    return acc += `<li class="add-social__item">${ItemOfSocialContacts(element)}</li>`;
-  } ,'');
+  console.log('additional contacts');
+  return array.reduce((acc) => {
+    return acc += `<li class="add-social__item">${ItemOfSocialContacts()}</li>`
+  } ,'')
 }

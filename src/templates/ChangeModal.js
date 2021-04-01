@@ -23,7 +23,7 @@ export const ChangeModal = ({id, name, surname, lastName, contacts}) => (
       </form>
     </div>
     <div class="add__contact">
-      <ul class="modal__form-add-social add-social ${additionalContactsFiller(contacts) ? "" : "d-none"}">
+      <ul class="modal__form-add-social add-social d-none">
       <!-- сюда вставляем ItemOfSocialContacts -->
         ${additionalContactsFiller(contacts)}
       </ul>
