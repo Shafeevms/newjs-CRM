@@ -45,7 +45,6 @@ export const onSave = (e) => {
 
 export const thisClientId = e => {
   const parent = e.target.closest('ul');
-  // if (!store.currentId)
   store.currentId = parent.querySelector('.client__title-id').innerHTML;
 }
 
@@ -72,4 +71,14 @@ const createClientObj = () => {
     })
   } else newClient.contacts = [];
   return newClient;
+}
+
+export const clearAddContact = (e) => {
+  const { currentClient: { contacts } } = store;
+  contacts.pop();
+  if (contacts.length === 0) {
+    document.querySelector('.add-social').classList.add('d-none');
+    document.querySelector('.add__contact').classList.remove('add__contact-padding');
+  }
+
 }

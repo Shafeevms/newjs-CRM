@@ -7,5 +7,6 @@ export const createClient = (e) => {
   e.preventDefault();
   document.querySelector('.modal').classList.remove('d-none');
   render('.modal__body', NewClientModal());
+  store.currentClient = { contacts: [] };
   addSaveListeners(e);
 }
