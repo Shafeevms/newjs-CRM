@@ -23,7 +23,6 @@ export const inputValidation = (obj) => {
       } else formValid.contacts[index] = true;
     })
   }
-  // console.log(formValid);
   return formValid;
 }
 

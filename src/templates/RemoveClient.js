@@ -5,8 +5,8 @@ export const RemoveClient = () => (
       <p class="modal__text">
         Вы действительно хотите удалить данного клиента?
       </p>
-      <button class="btn__save-client">Удалить</button>
-      <button class="btn__del-client">Отмена</button>
+      <button class="btn__save-client" data-remove="del">Удалить</button>
+      <button class="btn__del-client" data-remove="cancel">Отмена</button>
     </div>
   </div>`
 )

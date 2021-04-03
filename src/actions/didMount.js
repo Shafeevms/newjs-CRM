@@ -4,6 +4,7 @@ import { Loader } from '../templates/Loader';
 import { createClient } from './clientActions/createClient';
 import { removeClient } from './clientActions/removeClient';
 import { editClient } from './clientActions/editClient';
+import { sortBy, sortByTime } from '../actions/filters';
 
 export const didMount = () => {
   document.addEventListener("DOMContentLoaded", DOMContentLoaded);
@@ -28,6 +29,19 @@ export const addGlobalListeners = () => {
         break;
       case 'edit-client':
         editClient(e);
+        break;
+        // сортировка:
+      case 'sortID':
+        sortBy('id');
+        break;
+      case 'sortName':
+        sortBy('surname');
+        break;
+      case 'createdAt':
+        sortByTime('createdAt');
+        break;
+      case 'updatedAt':
+        sortByTime('updatedAt');
         break;
     }
   })

@@ -6,19 +6,21 @@ import { thisClientId } from '../modalListeners';
 
 export const removeClient = (e) => {
   e.preventDefault();
-  thisClientId(e);
+  if (!store.currentClient) thisClientId(e); //! почему-то здесь не работает возможность !store.currentClient && thisClientId(e)
   document.querySelector('.modal').classList.remove('d-none');
   render('.modal__body', RemoveClient());
   document.querySelector('.body').addEventListener('click', clickButtonListeners);
 }
 
+//! когда дублировались классы всё не работало - значит не удаляется eventlistener!
+
 const clickButtonListeners = (e) => {
   e.preventDefault();
-  const target = e.target.classList;
-    if (target.contains('btn__del-client')) {
+  const target = e.target.dataset;
+    if (target.remove === 'cancel') {
       closeModal();
       document.querySelector('.body').removeEventListener('click', clickButtonListeners);
-    } else if (target.contains('btn__save-client')) {
+    } else if (target.remove === 'del') {
       onDelete(store.currentId).then(() => {
       renderAllClients();
       console.log('удален');

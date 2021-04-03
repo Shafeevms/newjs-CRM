@@ -6,5 +6,11 @@ export const store = {
   clients: [],
   clientToADD: {},
   maxLength: 5,
+  sortedBy: {
+    id: null,
+    name: null,
+    createdAt: null,
+    updatedAt: null
+  },
 }
 

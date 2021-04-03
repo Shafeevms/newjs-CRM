@@ -1,14 +1,14 @@
 import { store } from "../../store";
 import { ItemOfSocialContacts } from '../../templates/ItemOfSocialContacts';
 import { renderAllClients } from "../render";
-import { addClient } from '../../api/api';
+import { addClient,changeClient } from '../../api/api';
 import { inputValidation, alertValidation } from '../formValidation';
 
 export const closeModal = () => {
   document.querySelector('.modal').classList.add('d-none');
   document.querySelector('.modal').removeEventListener('click', store.actions['clickButtonListeners']);
   document.querySelector('.add-social').removeEventListener('input', addClearInputButton);
-  document.querySelector('.body').removeEventListener('click', store.actions['clickButtonListeners']);
+  document.querySelector('.modal').removeEventListener('click', store.actions['clickButtonListeners']);
   delete store.currentClient;
 }
 
@@ -31,15 +31,31 @@ export const addExtraContact = () => {
 }
 
 export const onSave = (e) => {
-  let newClient = createClientObj();
-  const formValid = inputValidation(newClient);
+  let { currentClient} = store;
+  createClientObj();
+  const formValid = inputValidation(currentClient);
   if (!formValid.isValid) {
     alertValidation(formValid, e);
   } else {
-    addClient(newClient);
+    addClient(currentClient);
     renderAllClients();
     closeModal();
     document.querySelector('.modal').removeEventListener('click', store.actions['clickButtonListeners']);
+  }
+}
+
+export const onSaveEdited = (e) => {
+  let { currentClient} = store;
+  createClientObj();
+  const formValid = inputValidation(currentClient);
+  if (!formValid.isValid) {
+    alertValidation(formValid, e);
+  } else {
+    document.querySelector('.modal').removeEventListener('click', store.actions['clickButtonListeners']);
+    changeClient(currentClient).then(() => {
+      renderAllClients();
+      closeModal();
+    })
   }
 }
 
@@ -57,25 +73,26 @@ const addClearInputButton = (ev) => {
 }
 
 const createClientObj = () => {
-  const newClient = {};
+  let { currentClient} = store;
   const newClientContacts = document.querySelectorAll('.add-social__item');
-  newClient.name = document.querySelector('#name').value;
-  newClient.surname = document.querySelector('#surname').value;
-  newClient.lastName = document.querySelector('#lastname').value;
+  currentClient.name = document.querySelector('#name').value;
+  currentClient.surname = document.querySelector('#surname').value;
+  currentClient.lastName = document.querySelector('#lastname').value;
   if (newClientContacts.length > 0) {
-    newClient.contacts = Array.from(newClientContacts).map(el => {
+    currentClient.contacts = Array.from(newClientContacts).map(el => {
       return {
         type: el.querySelector('.add-social-select').value,
         value: el.querySelector('.add-social__input').value
       }
     })
-  } else newClient.contacts = [];
-  return newClient;
+  } else currentClient.contacts = [];
 }
 
 export const clearAddContact = (e) => {
   const { currentClient: { contacts } } = store;
+  const parent = e.target.closest('li');
   contacts.pop();
+  parent.remove();
   if (contacts.length === 0) {
     document.querySelector('.add-social').classList.add('d-none');
     document.querySelector('.add__contact').classList.remove('add__contact-padding');

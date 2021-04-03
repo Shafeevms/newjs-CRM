@@ -30,7 +30,7 @@ export const ChangeModal = ({id, name, surname, lastName, contacts}) => (
       <button class="btn__add-contact"><img src="./img/add-contact.svg" alt="добавить контакт" class="add__contact-icon">Добавить контакт</button>
     </div>
     <button class="btn__save-client">Сохранить</button>
-    <button class="close btn__del-client">Удалить клиента</button>
+    <button class="btn__del-client" data-order="del">Удалить клиента</button>
   </div>`
 )
 
