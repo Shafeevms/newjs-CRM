@@ -1,5 +1,9 @@
 import { store } from '../../store';
-// работает
+import { render } from '../render';
+import { itemsToRender } from '../../templates';
+import { ClientLine } from '../../templates/ClientLine';
+import { tooltipsInit } from '../tooltipsInit';
+
 export const sortBy = elementName => {
   const { clients, sortedBy } = store;
   console.log('sortBy', elementName)
@@ -10,16 +14,22 @@ export const sortBy = elementName => {
     clients.sort((a, b) => b[elementName] - a[elementName]);
     store.sortedBy[elementName] = 'reverse';
   }
-  console.log(store.clients)
+  render('.clients-list', itemsToRender(store.clients, ClientLine));
+  tooltipsInit(store);
 }
 
-
-//! сделать сортироввку по фамилии
 export const sortByString = elementName => {
   const { clients, sortedBy } = store;
   console.log('sortByString', elementName)
-
-  console.log(store.clients)
+  if (sortedBy[elementName] === null || sortedBy[elementName] === 'reverse') {
+    clients.sort((a, b) => b[elementName].localeCompare(a[elementName]));
+    store.sortedBy[elementName] = 'straight';
+  } else {
+    store.sortedBy[elementName] = 'reverse';
+    clients.sort((a, b) => a[elementName].localeCompare(b[elementName]));
+  }
+  render('.clients-list', itemsToRender(store.clients, ClientLine));
+  tooltipsInit(store);
 }
 
 const asTimelaps = str => new Date(str).getTime();
@@ -34,6 +44,7 @@ export const sortByTime = (elementName) => {
     clients.sort((a, b) => asTimelaps(b[elementName]) - asTimelaps(a[elementName]));
     store.sortedBy[elementName] = 'reverse';
   }
-  console.log(store.clients)
+  render('.clients-list', itemsToRender(store.clients, ClientLine));
+  tooltipsInit(store);
 }
 
