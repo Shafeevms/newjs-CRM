@@ -48,3 +48,13 @@ export const sortByTime = (elementName) => {
   tooltipsInit(store);
 }
 
+export const findClients = (str) => {
+  const { clients } = store;
+  const filteredClients = clients.filter(obj => (
+    obj.name.toLowerCase() +
+    obj.surname.toLowerCase() +
+    obj.lastName.toLowerCase()).includes(str.toLowerCase()));
+    render('.clients-list', itemsToRender(filteredClients, ClientLine));
+    tooltipsInit(store)
+}
+

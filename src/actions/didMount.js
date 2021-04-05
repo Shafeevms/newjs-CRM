@@ -4,7 +4,7 @@ import { Loader } from '../templates/Loader';
 import { createClient } from './clientActions/createClient';
 import { removeClient } from './clientActions/removeClient';
 import { editClient } from './clientActions/editClient';
-import { sortBy, sortByString, sortByTime } from '../actions/filters';
+import { sortBy, sortByString, sortByTime, findClients } from '../actions/filters';
 
 export const didMount = () => {
   document.addEventListener("DOMContentLoaded", DOMContentLoaded);
@@ -26,10 +26,10 @@ const DOMContentLoaded = () => {
 let timerID;
 export const addGlobalListeners = () => {
   const input = document.querySelector('.header__input');
-  clearTimeout(timerID);
   input.addEventListener('input', () => {
+    clearTimeout(timerID);
     timerID = setTimeout(() => {
-      console.log(input.value)
+      findClients(input.value);
     }, 400);
   })
 
