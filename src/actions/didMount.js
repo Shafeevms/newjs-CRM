@@ -4,7 +4,7 @@ import { Loader } from '../templates/Loader';
 import { createClient } from './clientActions/createClient';
 import { removeClient } from './clientActions/removeClient';
 import { editClient } from './clientActions/editClient';
-import { sortBy, sortByString, sortByTime, findClients } from '../actions/filters';
+import { sortBy, sortByString, sortByTime, onSearch, arrowRotate } from '../actions/filters';
 
 export const didMount = () => {
   document.addEventListener("DOMContentLoaded", DOMContentLoaded);
@@ -17,22 +17,9 @@ const DOMContentLoaded = () => {
   addGlobalListeners();
 }
 
-//! сделать функцию которая будет искать по фио и отрисовывать - должен собраться новый массив
-//! если поле инпут будет пустым должны отрисоваться все клиенты
-//! эту функцию вынести в filter.js
-//? таймер убрать в стор?
-
-
-let timerID;
 export const addGlobalListeners = () => {
   const input = document.querySelector('.header__input');
-  input.addEventListener('input', () => {
-    clearTimeout(timerID);
-    timerID = setTimeout(() => {
-      findClients(input.value);
-    }, 400);
-  })
-
+  input.addEventListener('input', onSearch);
   document.querySelector('.body').addEventListener('click', (e) => {
     const target = e.target.dataset.action;
     switch (target) {
@@ -48,15 +35,19 @@ export const addGlobalListeners = () => {
         // сортировка:
       case 'sortID':
         sortBy('id');
+        arrowRotate(e, 'id');
         break;
       case 'sortName':
         sortByString('surname');
+        arrowRotate(e, 'surname');
         break;
       case 'createdAt':
         sortByTime('createdAt');
+        arrowRotate(e, 'createdAt');
         break;
       case 'updatedAt':
         sortByTime('updatedAt');
+        arrowRotate(e, 'updatedAt');
         break;
     }
   })

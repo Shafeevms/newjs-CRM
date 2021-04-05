@@ -6,7 +6,6 @@ import { tooltipsInit } from '../tooltipsInit';
 
 export const sortBy = elementName => {
   const { clients, sortedBy } = store;
-  console.log('sortBy', elementName)
   if (sortedBy[elementName] === null || sortedBy[elementName] === 'reverse') {
     clients.sort((a, b) => a[elementName] - b[elementName]);
     store.sortedBy[elementName] = 'straight';
@@ -20,7 +19,6 @@ export const sortBy = elementName => {
 
 export const sortByString = elementName => {
   const { clients, sortedBy } = store;
-  console.log('sortByString', elementName)
   if (sortedBy[elementName] === null || sortedBy[elementName] === 'reverse') {
     clients.sort((a, b) => b[elementName].localeCompare(a[elementName]));
     store.sortedBy[elementName] = 'straight';
@@ -58,3 +56,19 @@ export const findClients = (str) => {
     tooltipsInit(store)
 }
 
+let timerID;
+export const onSearch = () => {
+  const input = document.querySelector('.header__input');
+  clearTimeout(timerID);
+  timerID = setTimeout(() => {
+    findClients(input.value);
+  }, 400);
+}
+
+export const arrowRotate = (e, name) => {
+  const { sortedBy } = store;
+  const parent = e.target.parentElement;
+  sortedBy[name] === 'reverse' ?
+  parent.querySelector('img').classList.add('rotate') :
+  parent.querySelector('img').classList.remove('rotate')
+}
