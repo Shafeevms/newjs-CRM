@@ -12,5 +12,4 @@ export const store = {
     createdAt: null,
     updatedAt: null
   },
-}
-
+};

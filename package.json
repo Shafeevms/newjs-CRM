@@ -1,14 +1,18 @@
 {
   "name": "kursovik_js",
   "version": "1.0.0",
-  "description": "",
+  "description": "Курсовая работа JS",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
     "start": "webpack serve"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "front-end",
+    "webpack",
+    "vanilla JS"
+  ],
+  "author": "Шафеев Максим",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.12.13",
@@ -17,6 +21,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^7.0.0",
     "css-loader": "^5.0.1",
+    "eslint": "^7.23.0",
     "file": "^0.2.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.0.0",
@@ -24,11 +29,10 @@
     "loader": "^2.1.1",
     "postcss-loader": "^5.0.0",
     "style-loader": "^2.0.0",
-    "svg-url-loader": "^7.1.1",
-    "url-loader": "^4.1.1",
     "webpack": "^5.21.2",
     "webpack-cli": "^4.5.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "@babel/eslint-parser": "^7.13.14"
   },
   "dependencies": {
     "tippy.js": "^6.2.7",

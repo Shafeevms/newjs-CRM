@@ -1,12 +1,12 @@
-import { NewClientModal } from "../../templates/NewClientModal";
-import { render } from "../render";
-import { addSaveListeners } from '../modalListeners/addSaveListeners';
-import { store } from "../../store";
+import { NewClientModal } from '../../templates/NewClientModal';
+import listeners from '../modalListeners/saveListeners';
+import { addListeners } from '../modalListeners/addListeners';
+import { store } from '../../store';
+import { showModal } from '../modalListeners';
 
 export const createClient = (e) => {
   e.preventDefault();
-  document.querySelector('.modal').classList.remove('d-none');
-  render('.modal__body', NewClientModal());
+  showModal(NewClientModal());
   store.currentClient = { contacts: [] };
-  addSaveListeners(e);
-}
+  addListeners(listeners);
+};

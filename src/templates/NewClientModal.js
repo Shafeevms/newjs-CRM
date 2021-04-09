@@ -27,5 +27,5 @@ export const NewClientModal = () => (
     <button class="btn__save-client">Сохранить</button>
     <button class="close btn__del-client">Отмена</button>
   </div>`
-)
+);
 

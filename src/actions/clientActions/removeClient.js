@@ -1,41 +1,46 @@
-import { deleteClient } from '../../api/api';
-import { renderAllClients, render } from '../render';
-import { RemoveClient } from "../../templates/RemoveClient";
+import { deleteClient } from '../../api';
+import { render, renderAllClients } from '../render';
+import { RemoveClient } from '../../templates/RemoveClient';
 import { store } from '../../store';
-import { thisClientId } from '../modalListeners';
+import { getClientId, showModal } from '../modalListeners';
+import { addListeners } from '../modalListeners/addListeners';
+import { NotFound } from '../../templates/NotFound';
 
 export const removeClient = (e) => {
   e.preventDefault();
-  if (!store.currentClient) thisClientId(e); //! почему-то здесь не работает возможность !store.currentClient && thisClientId(e)
-  document.querySelector('.modal').classList.remove('d-none');
-  render('.modal__body', RemoveClient());
+  if (!store.currentClient) {
+    store.currentId = getClientId(e);
+  }
+  showModal(RemoveClient());
+  addListeners(clickButtonListeners, '.body');
   document.querySelector('.body').addEventListener('click', clickButtonListeners);
-}
-
-//! когда дублировались классы всё не работало - значит не удаляется eventlistener!
+};
 
 const clickButtonListeners = (e) => {
   e.preventDefault();
   const target = e.target.dataset;
-    if (target.remove === 'cancel') {
-      closeModal();
-      document.querySelector('.body').removeEventListener('click', clickButtonListeners);
-    } else if (target.remove === 'del') {
-      onDelete(store.currentId).then(() => {
-      renderAllClients();
-      console.log('удален');
-      document.querySelector('.body').removeEventListener('click', clickButtonListeners);
-      delete store.currentId;
-      })
-    }
-}
-
-  const onDelete = (currentId) => {
+  if (target.remove === 'cancel') {
     closeModal();
-    return deleteClient(currentId);
-}
+    document.querySelector('.body').removeEventListener('click', clickButtonListeners);
+  } else if (target.remove === 'del') {
+    onDelete(store.currentId)
+      .then(() => {
+        renderAllClients();
+        document.querySelector('.body').removeEventListener('click', clickButtonListeners);
+        delete store.currentId;
+      })
+      .catch(() => {
+        render('.clinets-list', NotFound());
+      });
+  }
+};
+
+const onDelete = (currentId) => {
+  closeModal();
+  return deleteClient(currentId);
+};
 
 const closeModal = () => {
   document.querySelector('.modal').classList.add('d-none');
   document.querySelector('.modal').removeEventListener('click', clickButtonListeners);
-}
+};

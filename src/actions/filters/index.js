@@ -15,7 +15,7 @@ export const sortBy = elementName => {
   }
   render('.clients-list', itemsToRender(store.clients, ClientLine));
   tooltipsInit(store);
-}
+};
 
 export const sortByString = elementName => {
   const { clients, sortedBy } = store;
@@ -28,13 +28,13 @@ export const sortByString = elementName => {
   }
   render('.clients-list', itemsToRender(store.clients, ClientLine));
   tooltipsInit(store);
-}
+};
 
 const asTimelaps = str => new Date(str).getTime();
 // кажется работает - нужно проверить, когда будет работать updatedAt
 export const sortByTime = (elementName) => {
   const { clients, sortedBy } = store;
-  console.log('sortByTime')
+  console.log('sortByTime');
   if (sortedBy[elementName] === null || sortedBy[elementName] === 'reverse') {
     clients.sort((a, b) => asTimelaps(a[elementName]) - asTimelaps(b[elementName]));
     store.sortedBy[elementName] = 'straight';
@@ -44,7 +44,7 @@ export const sortByTime = (elementName) => {
   }
   render('.clients-list', itemsToRender(store.clients, ClientLine));
   tooltipsInit(store);
-}
+};
 
 export const findClients = (str) => {
   const { clients } = store;
@@ -53,8 +53,8 @@ export const findClients = (str) => {
     obj.surname.toLowerCase() +
     obj.lastName.toLowerCase()).includes(str.toLowerCase()));
     render('.clients-list', itemsToRender(filteredClients, ClientLine));
-    tooltipsInit(store)
-}
+    tooltipsInit(store);
+};
 
 let timerID;
 export const onSearch = () => {
@@ -63,12 +63,4 @@ export const onSearch = () => {
   timerID = setTimeout(() => {
     findClients(input.value);
   }, 400);
-}
-
-export const arrowRotate = (e, name) => {
-  const { sortedBy } = store;
-  const parent = e.target.parentElement;
-  sortedBy[name] === 'reverse' ?
-  parent.querySelector('img').classList.add('rotate') :
-  parent.querySelector('img').classList.remove('rotate')
-}
+};

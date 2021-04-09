@@ -1,7 +1,7 @@
 // изменить и удалить клиента
 import { additionalContactsFiller } from './index';
 
-export const ChangeModal = ({id, name, surname, lastName, contacts}) => (
+export const ChangeModal = ({ id, name, surname, lastName, contacts }) => (
   `
   <button class="close close-modal"></button>
   <div aria-modal="change-window" class="change__data">
@@ -23,7 +23,7 @@ export const ChangeModal = ({id, name, surname, lastName, contacts}) => (
       </form>
     </div>
     <div class="add__contact">
-      <ul class="modal__form-add-social add-social ${additionalContactsFiller(contacts) ? "" : "d-none"}">
+      <ul class="modal__form-add-social add-social ${additionalContactsFiller(contacts) ? '' : 'd-none'}">
       <!-- сюда вставляем ItemOfSocialContacts -->
         ${additionalContactsFiller(contacts)}
       </ul>
@@ -32,5 +32,5 @@ export const ChangeModal = ({id, name, surname, lastName, contacts}) => (
     <button class="btn__save-client">Сохранить</button>
     <button class="btn__del-client" data-order="del">Удалить клиента</button>
   </div>`
-)
+);
 

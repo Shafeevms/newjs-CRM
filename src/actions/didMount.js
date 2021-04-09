@@ -4,18 +4,18 @@ import { Loader } from '../templates/Loader';
 import { createClient } from './clientActions/createClient';
 import { removeClient } from './clientActions/removeClient';
 import { editClient } from './clientActions/editClient';
-import { sortBy, sortByString, sortByTime, onSearch, arrowRotate } from '../actions/filters';
+import { sortBy, sortByString, sortByTime, onSearch } from '../actions/filters';
 
 export const didMount = () => {
-  document.addEventListener("DOMContentLoaded", DOMContentLoaded);
+  document.addEventListener('DOMContentLoaded', DOMContentLoaded);
   store.actions['DOMContentLoaded'] = DOMContentLoaded;
-}
+};
 
 const DOMContentLoaded = () => {
   render('.clients-list', Loader());
   renderAllClients();
   addGlobalListeners();
-}
+};
 
 export const addGlobalListeners = () => {
   const input = document.querySelector('.header__input');
@@ -50,5 +50,13 @@ export const addGlobalListeners = () => {
         arrowRotate(e, 'updatedAt');
         break;
     }
-  })
-}
+  });
+};
+
+const arrowRotate = (e, name) => {
+  const { sortedBy } = store;
+  const parent = e.target.parentElement;
+  sortedBy[name] === 'reverse'
+  ? parent.querySelector('img').classList.add('rotate')
+  : parent.querySelector('img').classList.remove('rotate');
+};
