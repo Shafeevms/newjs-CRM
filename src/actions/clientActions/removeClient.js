@@ -1,18 +1,18 @@
-import { deleteClient } from '../../api/api';
+import { deleteClient } from '../../api';
 import { renderAllClients, render } from '../render';
-import { RemoveClient } from "../../templates/RemoveClient";
+import { RemoveClient } from '../../templates/RemoveClient';
 import { store } from '../../store';
-import { thisClientId } from '../modalListeners';
+import { getClientId } from '../modalListeners';
 
 export const removeClient = (e) => {
   e.preventDefault();
-  if (!store.currentClient) thisClientId(e); //! почему-то здесь не работает возможность !store.currentClient && thisClientId(e)
+  if (!store.currentClient) store.currentId = getClientId(e); // ! почему-то здесь не работает возможность !store.currentClient && thisClientId(e)
   document.querySelector('.modal').classList.remove('d-none');
   render('.modal__body', RemoveClient());
   document.querySelector('.body').addEventListener('click', clickButtonListeners);
-}
+};
 
-//! когда дублировались классы всё не работало - значит не удаляется eventlistener!
+// ! когда дублировались классы всё не работало - значит не удаляется eventlistener!
 
 const clickButtonListeners = (e) => {
   e.preventDefault();
@@ -26,16 +26,16 @@ const clickButtonListeners = (e) => {
       console.log('удален');
       document.querySelector('.body').removeEventListener('click', clickButtonListeners);
       delete store.currentId;
-      })
+      });
     }
-}
+};
 
   const onDelete = (currentId) => {
     closeModal();
     return deleteClient(currentId);
-}
+};
 
 const closeModal = () => {
   document.querySelector('.modal').classList.add('d-none');
   document.querySelector('.modal').removeEventListener('click', clickButtonListeners);
-}
+};

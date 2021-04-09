@@ -30,5 +30,5 @@ export const ClientLine = ({ id, surname, name, lastName, createdAt, updatedAt, 
       </li>
     </ul>
   </li>`
-)
+);
 

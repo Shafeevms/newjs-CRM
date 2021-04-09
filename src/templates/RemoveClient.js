@@ -9,4 +9,4 @@ export const RemoveClient = () => (
       <button class="btn__del-client" data-remove="cancel">Отмена</button>
     </div>
   </div>`
-)
+);

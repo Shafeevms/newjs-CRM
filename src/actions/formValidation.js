@@ -6,13 +6,13 @@ export const inputValidation = (obj) => {
     surname: true,
     name: true,
     contacts:[]
-  }
-  if(!obj.surname || obj.surname === alert) {
+  };
+  if (!obj.surname || obj.surname === alert) {
     formValid.surname = false;
     formValid.isValid = false;
   }
-  if(!obj.name || obj.name === alert) {
-    formValid.name = false
+  if (!obj.name || obj.name === alert) {
+    formValid.name = false;
     formValid.isValid = false;
   }
   if (obj.contacts) {
@@ -21,10 +21,10 @@ export const inputValidation = (obj) => {
         formValid.contacts[index] = false;
         formValid.isValid = false;
       } else formValid.contacts[index] = true;
-    })
+    });
   }
   return formValid;
-}
+};
 
 export const alertValidation = (obj, e) => {
   const parent = e.target.parentElement;
@@ -41,11 +41,11 @@ export const alertValidation = (obj, e) => {
       document.querySelectorAll('.add-social__input')[index].value = alert;
       document.querySelectorAll('.add-social__input')[index].classList.add('alert');
     }
-  })
-}
+  });
+};
 
 export const clearAlert = (e) => {
   e.target.classList.remove('alert');
   e.target.value = '';
   e.target.nextElementSibling.classList.remove('d-none');
-}
+};
