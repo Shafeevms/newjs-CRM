@@ -1,14 +1,14 @@
 {
   "name": "kursovik_js",
   "version": "1.0.0",
-  "description": "",
+  "description": "Курсовая работа JS",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
     "start": "webpack serve"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["front-end", "webpack", "vanilla JS"],
+  "author": "Шафеев Максим",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.12.13",
@@ -24,8 +24,6 @@
     "loader": "^2.1.1",
     "postcss-loader": "^5.0.0",
     "style-loader": "^2.0.0",
-    "svg-url-loader": "^7.1.1",
-    "url-loader": "^4.1.1",
     "webpack": "^5.21.2",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"

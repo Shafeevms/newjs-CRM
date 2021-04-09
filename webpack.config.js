@@ -54,27 +54,12 @@ module.exports = {
           {
             loader: 'image-webpack-loader',
             options: {
-              bypassOnDebug: true, // webpack@1.x
-              disable: true, // webpack@2.x and newer
+              bypassOnDebug: true,
+              disable: true,
             },
           },
         ],
       },
-      // {
-      //   test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-      //   type: 'asset/resource',
-      //   use: [{
-      //     loader: 'url-loader',
-      //     options: {}
-      // }]
-      // },
-      // {
-      //   test: /\.svg/,
-      //   use: {
-      //     loader: "svg-url-loader",
-      //     options: {},
-      //   },
-      // },
       {
         test: /\.(woff(2)?|eot|ttf|otf|)$/,
         loader: 'file-loader',
