@@ -28,8 +28,8 @@ const clickButtonListeners = (e) => {
 };
 
 const onSaveEdited = (e) => {
-  const { currentClient } = store;
   createClientObj();
+  const { currentClient } = store;
   const formValid = inputValidation(currentClient);
   if (!formValid.isValid) {
     alertValidation(formValid, e);

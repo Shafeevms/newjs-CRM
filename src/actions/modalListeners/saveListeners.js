@@ -23,11 +23,9 @@ const clickButtonListeners = (e) => {
     }
 };
 
-export default clickButtonListeners;
-
 const onSave = (e) => {
-  const { currentClient } = store;
   createClientObj();
+  const { currentClient } = store;
   const formValid = inputValidation(currentClient);
   if (!formValid.isValid) {
     alertValidation(formValid, e);
@@ -38,3 +36,5 @@ const onSave = (e) => {
     document.querySelector('.modal').removeEventListener('click', store.actions['clickButtonListeners']);
   }
 };
+
+export default clickButtonListeners;

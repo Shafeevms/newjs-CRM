@@ -24,8 +24,8 @@ export const deleteClient = (id) => {
 
 export const getClients = () => {
   return fetch(URL)
-  .then(resp => resp.json())
-  .then(resp => {
- store.clients = [...resp];
-});
+    .then(resp => resp.json())
+    .then(resp => {
+      store.clients = [...resp];
+    });
 };

@@ -1,4 +1,4 @@
-import { convertISO, liFiller } from './index';
+import { convertISO, convertISOToTime, liFiller } from './index';
 
 export const ClientLine = ({ id, surname, name, lastName, createdAt, updatedAt, contacts }) => (
   `<li class="clients-item">
@@ -10,12 +10,12 @@ export const ClientLine = ({ id, surname, name, lastName, createdAt, updatedAt, 
         <h2 class="client__title">${surname} ${name} ${lastName}</h2>
       </li>
       <li class="client__item  col-md-2">
-        <h2 class="client__title">${convertISO(createdAt).toLocaleDateString()}</h2>
-        <span class="time">${convertISO(createdAt).toLocaleTimeString().slice(0, 5)}</span>
+        <h2 class="client__title">${convertISO(createdAt)}</h2>
+        <span class="time">${convertISOToTime(createdAt)}</span>
       </li>
       <li class="client__item col-md-2">
-        <h2 class="client__title">${convertISO(updatedAt).toLocaleDateString()}</h2>
-        <span class="time">${convertISO(updatedAt).toLocaleTimeString().slice(0, 5)}</span>
+        <h2 class="client__title">${convertISO(updatedAt)}</h2>
+        <span class="time">${convertISOToTime(updatedAt)}</span>
       </li>
       <li class="client__item-social col-md-2">
         <ul class="social flex">

@@ -6,7 +6,9 @@ export const itemsToRender = (array, component) => {
   }, '');
 };
 
-export const convertISO = iso => new Date(iso);
+export const convertISO = iso => new Date(iso).toLocaleDateString();
+
+export const convertISOToTime = iso => convertISO(iso).slice(0, 5);
 
 export const liFiller = (array, id) => {
   return array.reduce((acc, element) => {
