@@ -21,12 +21,6 @@ ul {
   position: relative;
 }
 
-.container {
-  /* margin: 0 auto;
-  max-width: 984px; */
-}
-
-
 .flex {
   display: flex;
   align-items: center;
@@ -92,6 +86,19 @@ ul {
   display: inline;
   font-size: 12px;
   font-weight: 400;
+}
+
+.client__item:nth-child(2) {
+  padding-left: 5px;
+}
+
+@media screen and (max-width: 1199px) {
+  .container {
+    font-size: 12px;
+  }
+  .client__item:nth-child(2) {
+    padding-left: 25px;
+  }
 }
 
 .client__item {
@@ -162,7 +169,23 @@ ul {
   color: #9873FF;
   border: 1px solid #9873FF;
 }
-.btn-icon,
+
+.btn-icon-edit,
+.btn-icon-delete {
+  margin-right: 3px;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+}
+
+.btn-icon-edit {
+  background: url('../img/edit.svg') no-repeat;
+}
+
+.btn-icon-delete {
+  background: url('../img/cancel.svg');
+}
+
 .btn-add__icon {
   pointer-events: none;
 }
@@ -399,6 +422,13 @@ ul {
   top: 12px;
   right: 7px;
   pointer-events: none;
+}
+
+.arrow {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: url('../img/arrow-down.svg') center no-repeat;
 }
 
 

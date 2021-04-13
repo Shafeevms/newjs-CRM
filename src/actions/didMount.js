@@ -57,6 +57,6 @@ const arrowRotate = (e, name) => {
   const { sortedBy } = store;
   const parent = e.target.parentElement;
   sortedBy[name] === 'reverse'
-  ? parent.querySelector('img').classList.add('rotate')
-  : parent.querySelector('img').classList.remove('rotate');
+  ? parent.querySelector('.arrow').classList.add('rotate')
+  : parent.querySelector('.arrow').classList.remove('rotate');
 };

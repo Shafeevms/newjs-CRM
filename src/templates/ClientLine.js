@@ -23,10 +23,10 @@ export const ClientLine = ({ id, surname, name, lastName, createdAt, updatedAt, 
         </ul>
       </li>
       <li class="client__item col-md-1">
-        <button class="edit" data-action="edit-client"><span class="btn-icon"><img src="./img/edit.svg"></span> Изменить</button>
+        <button class="edit" data-action="edit-client"><span class="btn-icon-edit"></span> Изменить</button>
       </li>
       <li class="client__item col-md-1">
-        <button class="cancel" data-action="delete-client"><span class="btn-icon"><img src="./img/cancel.svg"></span>Удалить</button>
+        <button class="cancel" data-action="delete-client"><span class="btn-icon-delete"></span>Удалить</button>
       </li>
     </ul>
   </li>`
