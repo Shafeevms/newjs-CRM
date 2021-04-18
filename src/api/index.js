@@ -1,6 +1,6 @@
 import { store } from '../store';
 
-const URL = '//localhost:3000/api/clients';
+const URL = 'https://damp-oasis-12055.herokuapp.com/api/clients';
 
 export const addClient = (clientToADD) => {
   fetch(URL, {
