@@ -92,15 +92,6 @@ ul {
   padding-left: 5px;
 }
 
-@media screen and (max-width: 1199px) {
-  .container {
-    font-size: 12px;
-  }
-  .client__item:nth-child(2) {
-    padding-left: 25px;
-  }
-}
-
 .client__item {
   padding: 20px 0;
 }
@@ -140,7 +131,6 @@ ul {
 .social {
   max-width: 120px;
   display: flex;
-  flex-wrap: wrap;
 }
 
 .edit,
@@ -151,6 +141,10 @@ ul {
   border: none;
   background-color: transparent;
   transition: color .4s ease;
+}
+
+.edit {
+  margin-right: 5px;
 }
 
 .edit:hover {
@@ -480,4 +474,67 @@ ul {
 
 .vk {
   background: url('../img/vk.svg');
+}
+
+
+.client__actions {
+  display: flex;
+}
+
+.container-top {
+  margin: 0 auto;
+  padding-left: 20px;
+  max-width: 1186px;
+}
+
+.container-body {
+  margin: 0 auto;
+  padding: 0 90px;
+  max-width: 1186px;
+}
+
+@media screen and (max-width: 1199px) {
+  .client__item:nth-child(2) {
+    padding-left: 25px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .container-body {
+    padding: 0 20px;
+  }
+  .client__actions {
+    flex-wrap: wrap;
+  }
+  .time {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main,
+  .header {
+    width: 767px;
+  }
+  .container-body {
+    width: 734px;
+    overflow: scroll;
+  }
+  .row {
+    flex-wrap: nowrap;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .btn-add {
+    position: fixed;
+  }
+  .modal {
+    position: fixed;
+  }
+  .modal__body {
+    width: 90%;
+  }
+  .add-social__input {
+    width: auto;
+  }
 }
