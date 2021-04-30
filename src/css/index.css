@@ -493,6 +493,7 @@ ul {
   max-width: 1186px;
 }
 
+
 @media screen and (max-width: 1199px) {
   .client__item:nth-child(2) {
     padding-left: 25px;
@@ -516,11 +517,13 @@ ul {
     width: 767px;
   }
   .container-body {
-    width: 734px;
-    overflow: scroll;
+    width: 100%;
   }
   .row {
     flex-wrap: nowrap;
+  }
+  .table__body {
+    width: 725px;
   }
 }
 
@@ -536,5 +539,12 @@ ul {
   }
   .add-social__input {
     width: auto;
+  }
+  .container-body {
+    width: 576px;
+  }
+  .wrapper {
+    width: 576px;
+    overflow-y: scroll;
   }
 }

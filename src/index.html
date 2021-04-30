@@ -23,36 +23,40 @@
   <main class="main">
     <div class="container-body">
       <h2 class="title">Клиенты</h2>
-      <div class="table__head head">
-        <ul class="head__list row no-gutters">
-          <li class="head__item col-sm-1">
-            <h2 class="head__title hover head__title-id" data-action="sortID">ID</h2>
-            <span class="arrow"></span>
-          </li>
-          <li class="head__item col-sm-3">
-            <h2 class="head__title hover"  data-action="sortName">Фамилия Имя Отчество</h2>
-            <span class="head__title-text">А-Я</span>
-            <span class="arrow"></span>
-          </li>
-          <li class="head__item-line col-sm-2">
-            <h2 class="head__title hover"  data-action="createdAt">Дата и время создания</h2>
-            <span class="arrow"></span>
-          </li>
-          <li class="head__item-line col-sm-2">
-            <h2 class="head__title hover" data-action="updatedAt">Последние изменения</h2>
-            <span class="arrow"></span>
-          </li>
-          <li class="head__item col-sm-2">
-            <h2 class="head__title">Контакты</h2>
-          </li>
-          <li class="head__item col-sm-2">
-            <h2 class="head__title">Действия</h2>
-          </li>
-        </ul>
+      <div class="wrapper">
+        <div class="table__head head">
+          <ul class="head__list row no-gutters">
+            <li class="head__item col-sm-1">
+              <h2 class="head__title hover head__title-id" data-action="sortID">ID</h2>
+              <span class="arrow"></span>
+            </li>
+            <li class="head__item col-sm-3">
+              <h2 class="head__title hover"  data-action="sortName">Фамилия Имя Отчество</h2>
+              <span class="head__title-text">А-Я</span>
+              <span class="arrow"></span>
+            </li>
+            <li class="head__item-line col-sm-2">
+              <h2 class="head__title hover"  data-action="createdAt">Дата и время создания</h2>
+              <span class="arrow"></span>
+            </li>
+            <li class="head__item-line col-sm-2">
+              <h2 class="head__title hover" data-action="updatedAt">Последние изменения</h2>
+              <span class="arrow"></span>
+            </li>
+            <li class="head__item col-sm-2">
+              <h2 class="head__title">Контакты</h2>
+            </li>
+            <li class="head__item col-sm-2">
+              <h2 class="head__title">Действия</h2>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="table__body">
-        <ul class="clients-list">
-        </ul>
+      <div class="wrapper">
+        <div class="table__body">
+          <ul class="clients-list">
+          </ul>
+        </div>
       </div>
       <button class="btn-add" data-action="add-client"><span class="btn-add__icon"><img src="./img/btn-add.svg"></span> Добавить клиента</button>
     </div>
