@@ -493,6 +493,14 @@ ul {
   max-width: 1186px;
 }
 
+.client__id {
+  margin-right: 10px;
+}
+
+.client__title {
+  white-space: pre-line;
+  word-wrap: break-word;
+}
 
 @media screen and (max-width: 1199px) {
   .client__item:nth-child(2) {
@@ -546,5 +554,10 @@ ul {
   .wrapper {
     width: 576px;
     overflow-y: scroll;
+  }
+  .edit,
+  .cancel,
+  .client__title {
+    font-size: 16px;
   }
 }

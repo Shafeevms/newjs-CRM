@@ -3,7 +3,7 @@ import { convertISO, convertISOToTime, liFiller } from './index';
 export const ClientLine = ({ id, surname, name, lastName, createdAt, updatedAt, contacts }) => (
   `<li class="clients-item">
     <ul class="client__list row no-gutters">
-      <li class="client__item col-sm-1">
+      <li class="client__item col-sm-1 client__id">
         <h2 class="client__title client__title-id">${id}</h2>
       </li>
       <li class="client__item col-sm-3">
