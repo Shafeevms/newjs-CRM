@@ -89,7 +89,8 @@ ul {
 }
 
 .client__item:nth-child(2) {
-  padding-left: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .client__item {
@@ -121,6 +122,7 @@ ul {
 .head__title-id {
   padding-left: 5px;
   color: #b0b0b0;
+  font-size: 12px;
 }
 
 .time {
@@ -497,7 +499,7 @@ ul {
   margin-right: 10px;
 }
 
-.client__title {
+.client__title:not(:first-child) {
   white-space: pre-line;
   word-wrap: break-word;
 }
@@ -559,5 +561,23 @@ ul {
   .cancel,
   .client__title {
     font-size: 16px;
+  }
+
+  .head__item:nth-child(1) {
+    min-width: 156px;
+  }
+
+  .head__item:nth-child(2) {
+    min-width: 110px;
+  }
+
+  .head__item-line {
+    min-width: 124px;
+  }
+  .contacts {
+    margin-right: 50px;
+  }
+  .modal__body {
+    width: 70%;
   }
 }
