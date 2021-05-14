@@ -10,5 +10,4 @@ export const editClient = (e) => {
   store.currentClient = JSON.parse(JSON.stringify(store.clients.find(el => el.id === store.currentId)));
   showModal(ChangeModal(store.currentClient));
   addListeners(listeners);
-
 };

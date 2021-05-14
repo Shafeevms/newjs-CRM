@@ -107,6 +107,7 @@ ul {
 }
 
 .social__item {
+  position: relative;
   width: 16px;
   height: 16px;
 }
@@ -133,6 +134,7 @@ ul {
 .social {
   max-width: 120px;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .edit,
@@ -466,12 +468,19 @@ ul {
   background: url('../img/phone.svg');
 }
 
-.mail {
+.mail,
+.mail2 {
   background: url('../img/mail.svg');
 }
 
-.mail2 {
-  background: url('../img/mail-2.svg');
+.additional {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: url('../img/ellipse.svg') no-repeat;
+  font-size: 10px;
+  font-weight: 600;
+  color: #4306eb;
 }
 
 .vk {
@@ -486,13 +495,13 @@ ul {
 .container-top {
   margin: 0 auto;
   padding-left: 20px;
-  max-width: 1186px;
+  max-width: 1366px;
 }
 
 .container-body {
   margin: 0 auto;
   padding: 0 90px;
-  max-width: 1186px;
+  max-width: 1366px;
 }
 
 .client__id {
@@ -522,10 +531,14 @@ ul {
 }
 
 @media screen and (max-width: 767px) {
-  .main,
-  .header {
-    width: 767px;
+  .main {
+    overflow: scroll;
   }
+
+  .header__input {
+    width: 380px;
+  }
+
   .container-body {
     width: 100%;
   }
@@ -553,6 +566,10 @@ ul {
   .container-body {
     width: 576px;
   }
+
+  .container-top {
+    justify-content: center;
+  }
   .wrapper {
     width: 576px;
     overflow-y: scroll;
@@ -579,5 +596,11 @@ ul {
   }
   .modal__body {
     width: 70%;
+  }
+  .header__input {
+    display: none;
+  }
+  .header__logo {
+    margin-right: 0;
   }
 }

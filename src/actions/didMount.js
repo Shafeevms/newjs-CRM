@@ -5,6 +5,7 @@ import { createClient } from './clientActions/createClient';
 import { removeClient } from './clientActions/removeClient';
 import { editClient } from './clientActions/editClient';
 import { sortBy, sortByString, sortByTime, onSearch } from '../actions/filters';
+import { unfold } from './clientActions/unfold';
 
 export const didMount = () => {
   document.addEventListener('DOMContentLoaded', DOMContentLoaded);
@@ -23,6 +24,9 @@ export const addGlobalListeners = () => {
   document.querySelector('.body').addEventListener('click', (e) => {
     const target = e.target.dataset.action;
     switch (target) {
+      case 'unfold':
+        unfold(e);
+        break;
       case 'add-client':
         createClient(e);
         break;

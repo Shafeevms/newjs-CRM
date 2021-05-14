@@ -5,7 +5,7 @@ export const store = {
   },
   clients: [],
   clientToADD: {},
-  maxLength: 5,
+  maxLength: 10,
   sortedBy: {
     id: null,
     name: null,

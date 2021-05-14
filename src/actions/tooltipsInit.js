@@ -5,7 +5,7 @@ export const tooltipsInit = ({ clients }) => {
   clients.forEach(client => {
     client?.contacts.forEach(contact => {
       tippy(`.${contact.type}${client.id}`, {
-        content: contact.value,
+        content: `${contact.type}: ${contact.value}`,
       });
     });
   });
