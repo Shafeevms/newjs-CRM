@@ -3,10 +3,11 @@ import { store } from '../../store';
 import { removeClient } from '../clientActions/removeClient';
 import { closeModal } from './index.js';
 import { addExtraContact, clearAddContact } from './commonListeners.js';
-import { renderAllClients } from '../render';
+import { render, renderAllClients } from '../render';
 import { changeClient } from '../../api';
 import { inputValidation, alertValidation } from '../formValidation';
 import { createClientObj } from './index';
+import { Loader } from '../../templates/Loader';
 
 const clickButtonListeners = (e) => {
   e.preventDefault();
@@ -36,8 +37,9 @@ const onSaveEdited = (e) => {
   } else {
     document.querySelector('.modal').removeEventListener('click', store.actions['clickButtonListeners']);
     changeClient(currentClient).then(() => {
-      renderAllClients();
       closeModal();
+      render('.clients-list', Loader());
+      renderAllClients();
     });
   }
 };

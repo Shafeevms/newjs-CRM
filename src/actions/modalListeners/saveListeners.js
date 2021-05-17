@@ -1,11 +1,12 @@
 import { clearAlert } from '../formValidation';
 import { closeModal } from './index';
 import { addExtraContact, clearAddContact } from './commonListeners.js';
-import { renderAllClients } from '../render';
+import { renderAllClients, render } from '../render';
 import { addClient } from '../../api';
 import { inputValidation, alertValidation } from '../formValidation';
 import { store } from '../../store';
 import { createClientObj } from './index';
+import { Loader } from '../../templates/Loader';
 
 const clickButtonListeners = (e) => {
   e.preventDefault();
@@ -31,8 +32,9 @@ const onSave = (e) => {
     alertValidation(formValid, e);
   } else {
     addClient(currentClient);
-    renderAllClients();
     closeModal();
+    render('.clients-list', Loader());
+    renderAllClients();
     document.querySelector('.modal').removeEventListener('click', store.actions['clickButtonListeners']);
   }
 };

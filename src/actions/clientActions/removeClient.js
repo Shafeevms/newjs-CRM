@@ -5,6 +5,7 @@ import { store } from '../../store';
 import { getClientId, showModal } from '../modalListeners';
 import { addListeners } from '../modalListeners/addListeners';
 import { NotFound } from '../../templates/NotFound';
+import { Loader } from '../../templates/Loader';
 
 export const removeClient = (e) => {
   e.preventDefault();
@@ -25,6 +26,7 @@ const clickButtonListeners = (e) => {
   } else if (target.remove === 'del') {
     onDelete(store.currentId)
       .then(() => {
+        render('.clients-list', Loader());
         renderAllClients();
         document.querySelector('.body').removeEventListener('click', clickButtonListeners);
         delete store.currentId;
