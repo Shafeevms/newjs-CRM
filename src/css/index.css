@@ -83,6 +83,8 @@ ul {
   margin-bottom: 30px;
   background-color: #fff;
   min-height: 300px;
+  max-height: 656px;
+  overflow: scroll;
   height: 100%;
 }
 
@@ -345,7 +347,7 @@ ul {
   border-bottom: 1px solid #000;
   transition: text-shadow .3s ease;
 }
-.btn__add-contact:hover,
+.btn__add-contact:hover:enabled,
 .btn__del-client:hover {
   text-shadow: 0 0 1px #000;
 }
@@ -358,9 +360,10 @@ ul {
 
 
 .modal__form-add-social {
-  /* margin-bottom: 25px; */
   padding-top: 19px;
   padding-bottom: 25px;
+  max-height: 325px;
+  overflow-y: scroll;
 }
 
 .add-social-select {
@@ -558,7 +561,7 @@ ul {
 
 @media screen and (max-width: 576px) {
   .btn-add {
-    position: fixed;
+    margin: 0 0;
   }
   .modal {
     position: fixed;
@@ -577,7 +580,7 @@ ul {
   }
   .wrapper {
     width: 576px;
-    overflow-y: scroll;
+    overflow: scroll;
   }
   .edit,
   .cancel,
@@ -616,5 +619,18 @@ ul {
   }
   .option-img {
     left: 66px;
+  }
+  .modal__form-add-social {
+    max-height: 135px;
+  }
+  .modal__input {
+    margin-bottom: 5px;
+  }
+  .modal__container {
+    padding: 15px 25px;
+  }
+  .close-modal {
+    top: 20px;
+    right: 20px;
   }
 }
