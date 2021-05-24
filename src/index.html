@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= htmlWebpackPlugin.options.title %></title>
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body class="body">
   <div class="modal d-none close" data-remove="cancel">
     <div class="modal__body">
-      <!--  modal__body-new есть такой класс, который убирает padding-bottom -->
-      <!-- <button class="close-modal"><img src="./img/x.svg" alt="close-modal"></button> -->
     </div>
   </div>
   <header class="header">
@@ -31,12 +33,12 @@
               <span class="arrow"></span>
             </li>
             <li class="head__item col-sm-3">
-              <h2 class="head__title hover"  data-action="sortName">Фамилия Имя Отчество</h2>
+              <h2 class="head__title hover" data-action="sortName">Фамилия Имя Отчество</h2>
               <span class="head__title-text">А-Я</span>
               <span class="arrow"></span>
             </li>
             <li class="head__item-line col-sm-2">
-              <h2 class="head__title hover"  data-action="createdAt">Дата и время создания</h2>
+              <h2 class="head__title hover" data-action="createdAt">Дата и время создания</h2>
               <span class="arrow"></span>
             </li>
             <li class="head__item-line col-sm-2">
@@ -56,8 +58,9 @@
           </ul>
         </div>
       </div>
-      <button class="btn-add" data-action="add-client"><span class="btn-add__icon"><img src="./img/btn-add.svg"></span> Добавить клиента</button>
+      <button class="btn-add" data-action="add-client"><span class="btn-add__icon"></span> Добавить клиента</button>
     </div>
   </main>
 </body>
+
 </html>

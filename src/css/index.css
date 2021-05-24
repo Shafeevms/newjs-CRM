@@ -51,11 +51,13 @@ ul {
 
 .body {
   background-color: #e5e5e5;
+  overflow-x: hidden;
 }
 
 .main {
   padding-top: 40px;
   padding-bottom: 102px;
+  overflow-x: auto;
 }
 
 .table__head {
@@ -84,7 +86,6 @@ ul {
   background-color: #fff;
   min-height: 300px;
   max-height: 656px;
-  overflow: scroll;
   height: 100%;
 }
 
@@ -193,7 +194,11 @@ ul {
 }
 
 .btn-add__icon {
+  display: inline-block;
   pointer-events: none;
+  width: 23px;
+  height: 18px;
+  background: url('../img/btn-add.svg') bottom no-repeat;
 }
 
 .hover {
@@ -363,7 +368,7 @@ ul {
   padding-top: 19px;
   padding-bottom: 25px;
   max-height: 325px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .add-social-select {
@@ -540,10 +545,6 @@ ul {
 }
 
 @media screen and (max-width: 767px) {
-  .main {
-    overflow: scroll;
-  }
-
   .header__input {
     width: 380px;
   }
@@ -580,7 +581,7 @@ ul {
   }
   .wrapper {
     width: 576px;
-    overflow: scroll;
+    overflow: auto;
   }
   .edit,
   .cancel,
