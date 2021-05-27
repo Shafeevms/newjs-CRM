@@ -17,7 +17,12 @@ ul {
   list-style: none;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 .body {
+  overflow-x: hidden;
   position: relative;
 }
 
@@ -57,7 +62,7 @@ ul {
 .main {
   padding-top: 40px;
   padding-bottom: 102px;
-  overflow-x: auto;
+  overflow-x: hidden;
 }
 
 .table__head {
@@ -561,9 +566,6 @@ ul {
 }
 
 @media screen and (max-width: 576px) {
-  .btn-add {
-    margin: 0 0;
-  }
   .modal {
     position: fixed;
   }
@@ -573,14 +575,10 @@ ul {
   .add-social__input {
     width: auto;
   }
-  .container-body {
-    width: 576px;
-  }
   .container-top {
     justify-content: center;
   }
   .wrapper {
-    width: 576px;
     overflow: auto;
   }
   .edit,
