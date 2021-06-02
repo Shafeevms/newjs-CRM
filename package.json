@@ -1,11 +1,14 @@
 {
+  "homepage": "http://shafeevms.github.io/newjs-crm",
   "name": "kursovik_js",
   "version": "1.0.0",
   "description": "Курсовая работа JS",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "webpack serve"
+    "start": "webpack serve",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [
     "front-end",
@@ -25,6 +28,7 @@
     "eslint": "^7.23.0",
     "file": "^0.2.2",
     "file-loader": "^6.2.0",
+    "gh-pages": "^3.2.0",
     "html-webpack-plugin": "^5.0.0",
     "image-webpack-loader": "^7.0.1",
     "loader": "^2.1.1",
